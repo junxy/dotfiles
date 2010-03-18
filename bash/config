@@ -28,7 +28,7 @@ PROMPT_COMMAND='history -a'  # Whenever displaying the prompt, write the previou
 HISTSIZE=3000
 # possible values are:
 #      "ignorespace", "ignoredups", "ignoreboth" or "erasedups"
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
 
 
 ######################
