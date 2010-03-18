@@ -1,0 +1,76 @@
+
+
+######################
+# general
+######################
+export GREP_OPTIONS='--color=auto'
+export EDITOR=vim
+export FIGNORE="svn"
+export JAVA_OPTS='-Dhttp.nonProxyHosts=localhost'
+
+# MacPorts Bash shell command completion
+if [ -f /opt/local/etc/bash_completion ]; then
+      . /opt/local/etc/bash_completion
+fi
+
+# Autocorrect mispelled directories
+shopt -s cdspell
+
+
+####################################
+# History Settings
+####################################
+shopt -s histappend  # Make Bash append rather than overwrite the history on disk
+PROMPT_COMMAND='history -a'  # Whenever displaying the prompt, write the previous line to disk
+HISTSIZE=3000
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... and ignore same sucessive entries.
+export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoreboth
+
+
+######################
+# less colors
+######################
+# thanks to Nico Golde http://nion.modprobe.de/blog/archives/572-less-colors-for-man-pages.html
+export LESS_TERMCAP_mb=$(printf "\e[1;37m")
+export LESS_TERMCAP_md=$(printf "\e[1;37m")
+export LESS_TERMCAP_me=$(printf "\e[0m")
+export LESS_TERMCAP_se=$(printf "\e[0m")
+export LESS_TERMCAP_so=$(printf "\e[1;47;30m")
+export LESS_TERMCAP_ue=$(printf "\e[0m")
+export LESS_TERMCAP_us=$(printf "\e[0;36m")
+
+######################
+# prompt tweaks
+######################
+function trim_path {
+  MAXLEN=45
+  curdir=`pwd`
+  curdir=${curdir/$HOME/'~'}
+  if [ "${#curdir}" -gt "$MAXLEN" ] 
+  then
+    dirarray=(${curdir//\// })
+    i=${#dirarray[@]}
+    output=
+    while [  "${#output}" -lt "$MAXLEN" ]
+    do
+      let i=i-1
+      output='/'${dirarray[i]}$output
+    done
+    echo "...$output"
+  else
+    echo "$curdir"
+  fi
+}
+
+function parse_git_dirty {
+  git diff --quiet HEAD &>/dev/null
+    [[ $? == 1 ]] && echo "*"
+} 
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+
+PS1="\[\033[01;34m\]\$(trim_path)\[\033[00m\]\$(parse_git_branch)$"
+ 

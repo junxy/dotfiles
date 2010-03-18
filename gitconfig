@@ -1,0 +1,55 @@
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+[color "branch"]
+    current = blue reverse
+    local = blue
+    remote = green
+[color "diff"]
+    meta = blue bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+ [color "status"]
+    added = blue
+    changed = green
+    untracked = cyan
+
+[user]
+  	email = midon@apache.org
+  	name = Alexis Midon
+
+[core]
+    excludesfile = /home/beno/.gitignore
+    editor = vim
+
+[apply]
+      whitespace = fix
+
+[merge]
+    log = true
+
+[help]
+    autocorrect = 1
+
+[branch]
+    autosetupmerge = true
+
+[alias]
+         ci = commit
+         co = checkout
+         st = status
+         br = branch
+         sh = show
+         # show difference between the HEAD and the index
+         staged = diff --cached
+         # show difference between working tree and the index
+         unstaged = diff
+         # show staged and unstaged changes (what would be committed with "git commit -a")
+         both = diff HEAD
+         dh = diff HEAD
+         # quick access to oneline log format         
+         ol = log --date=relative --pretty=format:'%Cred%h %Cblue%ar %Creset%s %Cred%an'
+         gr = log --graph --pretty=oneline --abbrev-commit

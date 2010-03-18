@@ -1,0 +1,51 @@
+
+
+# Most used commands
+# http://lifehacker.com/202712/review-your-most-oft+used-unix-commands
+alias profileme="history|awk '{print $2}'|awk 'BEGIN {FS="|"} {print $1}'|sort|uniq -c|sort -r | head -n 25"
+
+#################################
+# Bookmark directories
+#################################
+# http://blog.infinitered.com/entries/show/4
+if [ ! -f ~/.dirs ]; then  # if doesn't exist, create it
+  touch ~/.dirs
+fi
+alias show='cat ~/.dirs'
+save (){
+  command sed "/!$/d" ~/.dirs > ~/.dirs1; \mv ~/.dirs1 ~/.dirs; echo "$@"=\"`pwd`\" >> ~/.dirs; source ~/.dirs ; 
+}
+source ~/.dirs  # Initialization for the above 'save' facility: source the .sdirs file
+shopt -s cdable_vars # set the bash option so that no '$' is required when using the above facility
+
+#################################
+# Others 
+#################################
+alias .p='source ~/.bash_profile'
+alias ?='h | g '
+alias g='grep -n'
+alias h='history'
+alias ls='ls -G'
+alias ll='ls -lFh'
+alias ps?='ps aux | grep '
+alias gitka='gitk --all&'
+alias gitxa='gitx --all&'
+alias ff='find . -type f -iname '
+alias fd='find . -type d -iname '
+alias pi='ping www.google.com'
+
+ 
+# Switch to a gem directory, trying to match your name the best
+function cdgem {
+  gem_dir=`gem env | grep INSTALLATION | cut -d' ' -f6`
+  cd $gem_dir/gems
+  cd `ls|grep $1|sort|tail -1`
+}
+ 
+function sgi {
+  sudo gem install $1
+}
+ 
+function sagi {
+  sudo apt-get -y install $1 
+}
