@@ -43,8 +43,9 @@ end
 def try_replace_file(source, target = source)
   source = File.expand_path(File.join(Dir.pwd, source))
   target = File.expand_path(File.join(ENV['HOME'], target))
-  replace = false
+  return unless File.exist? source
 
+  replace = false
   if File.exist? target
     if $replace_all
       replace = true

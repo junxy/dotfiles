@@ -1,4 +1,10 @@
-
+# OS specific support.  $var _must_ be set to either true or false.
+linux=false
+darwin=false
+case "`uname`" in
+  Linux*) linux=true;;
+  Darwin*) darwin=true;;
+esac
 
 # Most used commands
 # http://lifehacker.com/202712/review-your-most-oft+used-unix-commands
@@ -26,15 +32,27 @@ alias ?='h | g '
 alias g='grep -n'
 alias h='history'
 alias ls='ls -G'
-alias ll='ls -lFh'
+alias ll='ls -lF'
 alias ps?='ps aux | grep '
-alias gitka='gitk --all&'
-alias gitxa='gitx --all&'
 alias ff='find . -type f -iname '
-alias fd='find . -type d -iname '
 alias pi='ping www.google.com'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias idea="$IDEA_HOME/bin/idea.sh >> /tmp/idea.log 2>&1 &"
+alias c3="$C3_ROOT/target/c3_server"
 
- 
+# OS specific
+if $darwin; then
+  alias gitxa='gitx --all&'
+elif $linux; then 
+  alias pbcopy='xsel --clipboard --input'
+  alias pbpaste='xsel --clipboard --output'
+  alias gitka='gitk --all&'
+fi
+
+alias pbc='pbcopy'
+alias pbp='pbpaste'
+
 # Switch to a gem directory, trying to match your name the best
 function cdgem {
   gem_dir=`gem env | grep INSTALLATION | cut -d' ' -f6`

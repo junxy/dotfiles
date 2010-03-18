@@ -1,3 +1,11 @@
+# OS specific support.  $var _must_ be set to either true or false.
+linux=false
+darwin=false
+case "`uname`" in
+  Linux*) linux=true;;
+  Darwin*) darwin=true;;
+esac
+
 
 # $1 name of the variable
 # $2 path to the dir
@@ -17,14 +25,19 @@ function set_env_var {
 	fi
 }
 
-set_env_var JAVA6_HOME  /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home true
+set_env_var JAVA6_HOME /opt/jdk1.6.0_17 true
 set_env_var JAVA_HOME  $JAVA6_HOME true
-set_env_var IDEA_HOME /usr/local/java/idea-7941
+set_env_var IDEA_HOME /opt/idea-IU-93.94
 set_env_var IDEA_JDK $JAVA6_HOME
 
 unset set_env_var
 
-# MacPorts Installer addition on 2009-04-26_at_15:30:59: adding an appropriate PATH variable for use with MacPorts.
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
+if $darwin; then
+  # MacPorts Installer addition on 2009-04-26_at_15:30:59: adding an appropriate PATH variable for use with MacPorts.
+  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+  export MANPATH=/opt/local/share/man:$MANPATH
+fi
 
+
+export C3_ROOT=$HOME/w/c3main
+export C3_ENV='dev'
