@@ -3,6 +3,6 @@ source ~/.bash/aliases
 source ~/.bash/paths
 source ~/.bash/config
  
-if [ -f ~/.bashrc ]; then
-   . ~/.bashrc
-fi
+#if [ -f ~/.bashrc ]; then
+#   . ~/.bashrc
+#fi
