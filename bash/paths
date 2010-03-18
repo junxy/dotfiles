@@ -12,10 +12,9 @@ export JAVA_HOME=$JAVA6_HOME; export PATH=$JAVA_HOME/bin:$PATH
 export IDEA_HOME=/opt/idea-IU-93.94
 export IDEA_JDK=$JAVA6_HOME
 
-export PATH="~/bin:$PATH"
+export PATH="~/.bin:$PATH"
 
-export C3_ROOT=$HOME/w/c3main
-export C3_ENV='dev'
+export C3=$HOME/w/c3main
 
 if $darwin; then
   # MacPorts Installer addition on 2009-04-26_at_15:30:59: adding an appropriate PATH variable for use with MacPorts.

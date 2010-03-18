@@ -22,7 +22,7 @@
   	name = Alexis Midon
 
 [core]
-    excludesfile = /home/beno/.gitignore
+    excludesfile = /home/alexis/.gitignore
     editor = vim
 
 [apply]
@@ -53,4 +53,8 @@
     # quick access to oneline log format
     ol = log --date=relative --pretty=format:'%Cred%h %C(yellow)%d %Cblue%ar %Creset%s %Cgreen%an'
     gr = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %cr%Creset, %Cgreen%an'
+    # some rebase sugar
     pure = pull --rebase
+    continue = rebase --continue
+    abort = rebase --abort
+
