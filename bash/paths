@@ -7,30 +7,15 @@ case "`uname`" in
 esac
 
 
-# $1 name of the variable
-# $2 path to the dir
-# $3 prepend $2/bin to PATH? true if set
-function set_env_var {
-	if [ -d "$2" ]; then
-		export "$1"=$2
-		if [ -n "$3" ]; then
-			if [ -d "$2"/bin ]; then
-				export PATH="$2"/bin:$PATH;
-			else
-				echo Directory not found! $2/bin
-			fi
-		fi
-	else
-		echo Directory not found! $2
-	fi
-}
+export JAVA6_HOME=/opt/jdk1.6.0_17;
+export JAVA_HOME=$JAVA6_HOME; export PATH=$JAVA_HOME/bin:$PATH
+export IDEA_HOME=/opt/idea-IU-93.94
+export IDEA_JDK=$JAVA6_HOME
 
-set_env_var JAVA6_HOME /opt/jdk1.6.0_17 true
-set_env_var JAVA_HOME  $JAVA6_HOME true
-set_env_var IDEA_HOME /opt/idea-IU-93.94
-set_env_var IDEA_JDK $JAVA6_HOME
+export PATH="~/bin:$PATH"
 
-unset set_env_var
+export C3_ROOT=$HOME/w/c3main
+export C3_ENV='dev'
 
 if $darwin; then
   # MacPorts Installer addition on 2009-04-26_at_15:30:59: adding an appropriate PATH variable for use with MacPorts.
@@ -38,6 +23,3 @@ if $darwin; then
   export MANPATH=/opt/local/share/man:$MANPATH
 fi
 
-
-export C3_ROOT=$HOME/w/c3main
-export C3_ENV='dev'
