@@ -43,6 +43,8 @@ alias c3="$C3_ROOT/target/c3_server"
 alias cdc3="cd $C3_ROOT"
 alias cdw="cd ~/w"
 
+function c { cd ~/w/$1; }
+
 # OS specific
 if $darwin; then
   alias gitxa='gitx --all&'
