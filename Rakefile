@@ -43,8 +43,12 @@ end
 def try_replace_file(source, target = source)
   source = File.expand_path(File.join(Dir.pwd, source))
   target = File.expand_path(File.join(ENV['HOME'], target))
-  replace = false
+  unless File.exist? source
+    puts "#{File.basename(source)} does not exist"
+    return
+  end
 
+  replace = false
   if File.exist? target
     if $replace_all
       replace = true
@@ -74,6 +78,11 @@ def update_ssh_config
   ssh_path = File.expand_path(File.join(ENV['HOME'], ".ssh"))
   ssh_config = File.join(ssh_path, "config")
   ssh_config_part = File.expand_path(File.join(Dir.pwd, "ssh-config"))
+
+  unless File.exists? ssh_config_part
+    puts "#{File.basename(ssh_config_part)} does not exist"
+    return
+  end
 
   if File.directory? ssh_path
     if File.exist? ssh_config

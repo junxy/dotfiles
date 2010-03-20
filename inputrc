@@ -1,0 +1,7 @@
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set mark-directories on
+set mark-symlinked-directories on
+set history-preserve-point on
+set horizontal-scroll-mode off
+set expand-tilde off
