@@ -6,20 +6,22 @@ case "`uname`" in
   Darwin*) darwin=true;;
 esac
 
+if $darwin; then
+  JAVA6_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
+  # MacPorts Installer addition on 2009-04-26_at_15:30:59: adding an appropriate PATH variable for use with MacPorts.
+  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+  export MANPATH=/opt/local/share/man:$MANPATH
+elif $linux; then
+  export JAVA6_HOME=/opt/jdk1.6.0_17;
+  export IDEA_HOME=/opt/idea-IU-93.94
+fi
 
-export JAVA6_HOME=/opt/jdk1.6.0_17;
+
 export JAVA_HOME=$JAVA6_HOME; export PATH=$JAVA_HOME/bin:$PATH
-export IDEA_HOME=/opt/idea-IU-93.94
 export IDEA_JDK=$JAVA6_HOME
 export QIZX_HOME='/opt/qizx'
 
 export PATH="~/.bin:$QIZX_HOME/bin:$PATH"
 
 export C3=$HOME/w/c3main
-
-if $darwin; then
-  # MacPorts Installer addition on 2009-04-26_at_15:30:59: adding an appropriate PATH variable for use with MacPorts.
-  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-  export MANPATH=/opt/local/share/man:$MANPATH
-fi
 

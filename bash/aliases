@@ -8,7 +8,7 @@ esac
 
 # Most used commands
 # http://lifehacker.com/202712/review-your-most-oft+used-unix-commands
-alias profileme="history|awk '{print $2}'|awk 'BEGIN {FS="|"} {print $1}'|sort|uniq -c|sort -r | head -n 25"
+#alias profileme="history|awk '{print $2}'|awk 'BEGIN {FS="|"} {print $1}'|sort|uniq -c|sort -r | head -n 25"
 
 #################################
 # Bookmark directories
@@ -43,6 +43,8 @@ alias c3="$C3/target/c3_server"
 alias c3env='. load_build_vars'
 alias cdc3="cd $C3"
 alias cdw="cd ~/w"
+
+function c { cd ~/w/$1; }
 
 # OS specific
 if $darwin; then
