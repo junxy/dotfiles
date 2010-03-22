@@ -18,7 +18,7 @@
     untracked = cyan
 
 [user]
-  	email = midon@apache.org
+  	email = alexis.midon@c3-carbon.com
   	name = Alexis Midon
 
 [core]
@@ -50,7 +50,7 @@
     # show staged and unstaged changes (what would be committed with "git commit -a")
     both = diff HEAD
     dh = diff HEAD
-    # quick access to oneline log format
+    # quick access to oneline log format         
     ol = log --date=relative --pretty=format:'%Cred%h %C(yellow)%d %Cblue%ar %Creset%s %Cgreen%an'
     gr = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %cr%Creset, %Cgreen%an'
     # some rebase sugar
