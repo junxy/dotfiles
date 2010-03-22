@@ -8,7 +8,7 @@ esac
 
 # Most used commands
 # http://lifehacker.com/202712/review-your-most-oft+used-unix-commands
-alias profileme="history|awk '{print $2}'|awk 'BEGIN {FS="|"} {print $1}'|sort|uniq -c|sort -r | head -n 25"
+#alias profileme="history|awk '{print $2}'|awk 'BEGIN {FS="|"} {print $1}'|sort|uniq -c|sort -r | head -n 25"
 
 #################################
 # Bookmark directories
@@ -49,6 +49,8 @@ alias cdw="cd ~/w"
 alias lsh="rlwrap $C3/love-shell.sh"
 alias c3l="less ~/c3log/c3_server_0.log"
 alias sshr="ssh -i /home/alexis/w/amazon/c3_dev_keypair.pem root@reporting.c3platform.com"
+
+function c { cd ~/w/$1; }
 
 # OS specific
 if $darwin; then
