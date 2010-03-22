@@ -55,6 +55,8 @@
     gr = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %cr%Creset, %Cgreen%an'
     # some rebase sugar
     pure = pull --rebase
-    continue = rebase --continue
-    abort = rebase --abort
+    reb = rebase
+    rebi = rebase -i
+    rebc = rebase --continue
+    reba = rebase --abort
 
