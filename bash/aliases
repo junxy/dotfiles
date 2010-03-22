@@ -49,6 +49,7 @@ alias cdw="cd ~/w"
 alias lsh="rlwrap $C3/love-shell.sh"
 alias c3l="less ~/c3log/c3_server_0.log"
 alias sshr="ssh -i /home/alexis/w/amazon/c3_dev_keypair.pem root@reporting.c3platform.com"
+alias wdb='rm -vrf $C3/data/devlocal'
 
 function c { cd ~/w/$1; }
 
