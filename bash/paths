@@ -11,8 +11,9 @@ export JAVA6_HOME=/opt/jdk1.6.0_17;
 export JAVA_HOME=$JAVA6_HOME; export PATH=$JAVA_HOME/bin:$PATH
 export IDEA_HOME=/opt/idea-IU-93.94
 export IDEA_JDK=$JAVA6_HOME
+export QIZX_HOME='/opt/qizx'
 
-export PATH="~/.bin:$PATH"
+export PATH="~/.bin:$QIZX_HOME/bin:$PATH"
 
 export C3=$HOME/w/c3main
 
