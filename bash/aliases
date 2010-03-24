@@ -41,17 +41,21 @@ alias ...='cd ../..'
 alias idea="$IDEA_HOME/bin/idea.sh >> /tmp/idea.log 2>&1 &"
 alias dot="cd ~/.dotfiles"
 
+function c { cd ~/w/$1; }
+
 # C3 stuffs
 alias c3="$C3/target/c3_server"
 alias c3env='. load_build_vars'
 alias cdc="cd $C3"
 alias cdw="cd ~/w"
+alias cdl="cd ~/c3log"
 alias lsh="rlwrap $C3/love-shell.sh"
-alias c3l="less ~/c3log/c3_server_0.log"
-alias sshr="ssh -i /home/alexis/w/amazon/c3_dev_keypair.pem root@reporting.c3platform.com"
-alias wdb='rm -vrf $C3/data/devlocal'
+alias log="less ~/c3log/c3_server_0.log"
+alias wplog="rm -v ~/c3log/c3_server_0.log"
+alias wpdb='rm -rf $C3/data/devlocal'
+alias bkpdb='cp -r $C3/data/devlocal $C3/data/devlocal.bkp'
+alias sshr='ssh -i /home/alexis/w/amazon/c3_dev_keypair.pem root@reporting.c3platform.com'
 
-function c { cd ~/w/$1; }
 
 # OS specific
 if $darwin; then
