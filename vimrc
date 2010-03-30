@@ -120,8 +120,8 @@ au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
 
 " Plugins *********************************************************************
 let g:fuzzy_ignore = "*.class,*.jar,*.zip,*.png,*.jpg,*.jpeg"
-let g:fuzzy_matching_limit = 30
-" let g:fuzzy_ceiling = 500
+"let g:fuzzy_matching_limit = 50000
+let g:fuzzy_ceiling = 15000
 let g:fuzzy_roots = ['.', '/home/alexis/w/c3main']
 
 map <leader>t :FuzzyFinderTextMate<CR>
