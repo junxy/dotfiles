@@ -10,6 +10,11 @@ set viminfo='1000,f1,:100,@100,/20
 set modeline                          " make sure modeline support is enabled
 set autoread                          " reload files (no local changes only)
 set tabpagemax=50                     " open 50 tabs max
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
 
 "  Backups ******************************************************************** 
 set nobackup                           " do not keep backups after close
@@ -107,22 +112,20 @@ vnoremap <Up> gk
 inoremap <Down> <C-o>gj
 inoremap <Up> <C-o>gk
 
+" File Types ******************************************************************
+au BufRead,BufNewFile *.rpdf       set ft=ruby
+au BufRead,BufNewFile buildfile       set ft=ruby " buildr buildfile 
+au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
+
+
+" Plugins *********************************************************************
 let g:fuzzy_ignore = "*.class,*.jar,*.zip,*.png,*.jpg,*.jpeg"
 let g:fuzzy_matching_limit = 30
-let g:fuzzy_ceiling = 500000
-let g:fuzzy_roots = ['.', '/Users/am/w', '/Users/am/s']
+" let g:fuzzy_ceiling = 500
+let g:fuzzy_roots = ['.', '/home/alexis/w/c3main']
 
 map <leader>t :FuzzyFinderTextMate<CR>
 map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>f :FuzzyFinderFile<CR>
 
-syntax on             " Enable syntax highlighting
-filetype on           " Enable filetype detection
-filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific plugins
-
-" File Types ******************************************************************
-au BufRead,BufNewFile *.rpdf       set ft=ruby
-au BufRead,BufNewFile buildfile       set ft=ruby " buildr buildfile 
-au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
