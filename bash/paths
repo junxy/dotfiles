@@ -20,8 +20,11 @@ fi
 export JAVA_HOME=$JAVA6_HOME; export PATH=$JAVA_HOME/bin:$PATH
 export IDEA_JDK=$JAVA6_HOME
 export QIZX_HOME='/opt/qizx'
+export ANT_HOME='/opt/ant'
+export ECLIPSE_HOME='/opt/eclipse'
+export SQL_DEVELOPER='/opt/sqldeveloper'
 
-export PATH="~/.bin:$QIZX_HOME/bin:$PATH"
+export PATH="~/.bin:$SQL_DEVELOPER:$ECLIPSE_HOME:$QIZX_HOME/bin:$ANT_HOME/bin:$PATH"
 
 export C3=$HOME/w/c3main
 

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "Go get a coffee..."
 load_build_vars
 cd $C3
 buildr clean server test=no
@@ -8,12 +9,12 @@ rm -rf data/devlocal
 ./target/c3_server start
 
 sleep 1
-echo "Waiting for server"
+echo "Waiting for server..."
 while [ -z "$UP" ]; do
   sleep 1
   UP=`tail -n30 ~/c3log/c3_server_0.log | grep GAMEON`
 done 
-echo "Server is up"
+echo "Server is up!"
 echo "Start provisioning"
 ./love-shell.sh PityTheFool.js
 
