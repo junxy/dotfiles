@@ -39,7 +39,7 @@ alias pi='ping www.google.com'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias idea="$IDEA_HOME/bin/idea.sh >> /tmp/idea.log 2>&1 &"
-alias idea="sqldeveloper.sh >> /dev/null 2>&1 &"
+alias sqldev="sqldeveloper.sh >> /dev/null 2>&1 &"
 alias dot="cd ~/.dotfiles"
 
 function c { cd ~/w/$1; }
@@ -50,7 +50,7 @@ alias c3env='. load_build_vars'
 alias cdc="cd $C3"
 alias cdw="cd ~/w"
 alias cdl="cd ~/c3log"
-alias lsh="rlwrap $C3/love-shell.sh"
+alias lsh="rlwrap $C3/c3shell.sh"
 alias log="less ~/c3log/c3_server_0.log"
 alias wplog="rm -v ~/c3log/c3_server_0.log"
 alias wpdb='rm -rf $C3/data/devlocal'

@@ -16,5 +16,5 @@ while [ -z "$UP" ]; do
 done 
 echo "Server is up!"
 echo "Start provisioning"
-./love-shell.sh PityTheFool.js
+./c3shell.sh PityTheFool.js
 
