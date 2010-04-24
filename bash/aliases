@@ -61,6 +61,9 @@ alias sshr='ssh -i /home/alexis/w/amazon/c3_dev_keypair.pem root@reporting.c3pla
 # OS specific
 if $darwin; then
   alias gitxa='gitx --all&'
+  alias bkp_muse2motomoto='rsync -C --delete -v -rt /Volumes/MUSE/others /Volumes/MUSE/Photos /Volumes/Volume_1/bkp-muse'
+  alias bkp_muse2mac='rsync -C --delete -v -a /Volumes/MUSE/Photos /Users/am/Pictures/'
+  alias bkp_muse='bkp_muse2mac && bkp_muse2motomoto'
 elif $linux; then 
   alias pbcopy='xsel --clipboard --input'
   alias pbpaste='xsel --clipboard --output'
