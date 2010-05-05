@@ -24,6 +24,7 @@
 [core]
     excludesfile = /home/alexis/.gitignore
     editor = vim
+	autocrlf = input
 
 [apply]
       whitespace = fix
