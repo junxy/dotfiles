@@ -24,7 +24,6 @@
 [core]
     excludesfile = /home/alexis/.gitignore
     editor = vim
-	autocrlf = input
 
 [apply]
       whitespace = fix
@@ -46,6 +45,7 @@
     sh = show
     # show difference between the HEAD and the index
     staged = diff --cached
+    stg = diff --cached
     # show difference between working tree and the index
     unstaged = diff
     # show staged and unstaged changes (what would be committed with "git commit -a")
@@ -61,3 +61,5 @@
     rebc = rebase --continue
     reba = rebase --abort
 
+[push]
+	default = tracking
