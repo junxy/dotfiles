@@ -4,18 +4,19 @@
     diff = auto
     status = auto
 [color "branch"]
-    current = blue reverse
-    local = blue
-    remote = green
+    current = green bold
+    local = green
+    remote = red bold
 [color "diff"]
     meta = blue bold
     frag = magenta bold
     old = red bold
     new = green bold
- [color "status"]
-    added = blue
-    changed = green
-    untracked = cyan
+ #[color "status"]
+ #   added = blue
+ #   changed = green
+ #   untracked = cyan
+
 
 [user]
   	email = alexis.midon@c3-carbon.com
@@ -56,6 +57,7 @@
     gr = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %cr%Creset, %Cgreen%an'
     # some rebase sugar
     pure = pull --rebase
+    pp = !git pull --rebase && git push
     reb = rebase
     rebi = rebase -i
     rebc = rebase --continue
@@ -63,3 +65,10 @@
 
 [push]
 	default = tracking
+
+[diff]
+    # Tells git to detect renames. If set to any boolean value, it will enable basic rename detection.
+    # If set to "copies" or "copy", it will detect copies, as well.
+    renames = copies
+    # a prefix pair that is different from the standard "a/" and "b/"
+    mnemonicprefix = true

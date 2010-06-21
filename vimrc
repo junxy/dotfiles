@@ -129,3 +129,4 @@ map <leader>b :FuzzyFinderBuffer<CR>
 map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
 map <leader>f :FuzzyFinderFile<CR>
 
+hi Comment ctermfg=white
