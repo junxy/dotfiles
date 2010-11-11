@@ -51,12 +51,18 @@ alias cdc="cd $C3"
 alias cdw="cd ~/w"
 alias cdl="cd ~/c3log"
 alias lsh="rlwrap $C3/c3shell.sh"
-alias log="less -N ~/c3log/c3_server_0.log"
-alias wpl="mv -v ~/c3log/c3_server_0.log ~/c3log/c3_server_0.log.$(date +%s)"
-alias cpl="mv -v ~/c3log/c3_server_0.log ~/c3log/c3_server_0.log.$(date +%s)"
+alias log="less ~/c3log/c3_server.log"
 alias wpdb='rm -rf $C3/integration/localdb'
 alias bkpdb='cp -r $C3/data/devlocal $C3/data/devlocal.bkp'
 alias sshr='ssh -i /home/alexis/w/amazon/c3_dev_keypair.pem root@reporting.c3platform.com'
+alias zkh='for f in {1..3}; do echo "$f --------- "; ssh zk$f "sudo /usr/local/zk/bin/zkServer.sh status "; done'
+alias cfc='rm -vrf ~/.macromedia/Flash_Player/#SharedObjects/ ~/.adobe/Flash_Player/AssetCache/'
+
+# start oracle vm
+alias sovm='VBoxManage startvm OracleDBServer'
+alias kovm='VBoxManage controlvm OracleDBServer poweroff'
+
+function wpl { mv -v ~/c3log/c3_server.log ~/c3log/c3_server.log.$(date +%s); }
 
 # OS specific
 if $darwin; then
@@ -72,7 +78,10 @@ fi
 
 alias pbc='pbcopy'
 alias pbp='pbpaste'
-
+alias pwdc='pwd|pbc'
+function zkb {
+  for f in {1..3}; do echo "zk$f --------- "; ssh zk$f "$@"; done
+}
 function ec3 {
   host=$1; shift
   ssh -v "${host}.c3platform.com"  $@
