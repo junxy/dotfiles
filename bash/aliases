@@ -60,7 +60,12 @@ alias cfc='rm -vrf ~/.macromedia/Flash_Player/#SharedObjects/ ~/.adobe/Flash_Pla
 
 # start oracle vm
 alias sovm='VBoxManage startvm OracleDBServer'
+# kill oracle vm
 alias kovm='VBoxManage controlvm OracleDBServer poweroff'
+# restore 'cleandb' snapshot
+alias rovm='VBoxManage snapshot OracleDBServer restore cleandb'
+# kill, restore and restart
+alias covm='kovm && rovm && sovm'
 
 function wpl { mv -v ~/c3log/c3_server.log ~/c3log/c3_server.log.$(date +%s); }
 
