@@ -1,0 +1,27 @@
+
+# C3 stuffs
+alias c3="$C3/target/c3_server"
+alias c3env='. load_build_vars'
+alias cdc="cd $C3"
+alias log="less ~/c3log/c3_server.log"
+alias zkh='for f in {1..3}; do echo "$f --------- "; ssh zk$f "sudo /usr/local/zk/bin/zkServer.sh status "; done'
+alias cfc='rm -vrf ~/.macromedia/Flash_Player/#SharedObjects/ ~/.adobe/Flash_Player/AssetCache/'
+
+# start oracle vm
+alias sovm='VBoxManage startvm OracleDBServer'
+# kill oracle vm
+alias kovm='VBoxManage controlvm OracleDBServer poweroff'
+# restore 'cleandb' snapshot
+alias rovm='VBoxManage snapshot OracleDBServer restore cleandbsetcursors'
+# kill, restore and restart
+alias covm='kovm && rovm && sovm'
+
+function wpl { mv -v ~/c3log/c3_server.log ~/c3log/c3_server.log.$(date +%s); }
+function zkb {
+  for f in {1..3}; do echo "zk$f --------- "; ssh zk$f "$@"; done
+}
+
+# grep c3_server_log
+function gl {
+  grep "$@" ~/c3log/c3_server_0.log
+}

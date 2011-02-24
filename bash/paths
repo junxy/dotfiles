@@ -13,12 +13,11 @@ if $darwin; then
   export MANPATH=/opt/local/share/man:$MANPATH
 elif $linux; then
   export JAVA6_HOME=/opt/jdk1.6.0_20;
-  #export IDEA_HOME=$HOME/local/idea-IU-95.429
-  #export IDEA_HOME=$HOME/local/idea-IU-103.72
   export IDEA_HOME=$HOME/local/idea-IU-99.18
 fi
 
 
+export C3=$HOME/w/c3main
 export JAVA_HOME=$JAVA6_HOME; export PATH=$JAVA_HOME/bin:$PATH
 export IDEA_JDK=$JAVA6_HOME
 export ANT_HOME='/opt/ant'
@@ -28,5 +27,6 @@ export GROOVY_HOME='/home/alexis/w/bazaar/zk-tools/groovy'
 
 export PATH="$HOME/local/bin:$HOME/.bin:$SQL_DEVELOPER:$ECLIPSE_HOME:$ANT_HOME/bin:$GROOVY_HOME/bin:$PATH"
 
-export C3=$HOME/w/c3main
 
+# Last
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
