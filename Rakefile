@@ -118,7 +118,7 @@ desc "Install dot files into user's home directory."
 task :install do
   $replace_all = false
   Dir['*'].each do |file|
-    next if %w[.gitignore Rakefile README LICENSE gitconfig.linux gitconfig.macosx ssh-config].include? file
+    next if %w[bash .gitignore Rakefile README LICENSE gitconfig.linux gitconfig.macosx ssh-config].include? file
     
     try_replace_file(file, ".#{file}")
   end

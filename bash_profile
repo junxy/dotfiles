@@ -1,8 +1,5 @@
-source ~/.bash/paths
-source ~/.bash/config
-source ~/.bash/aliases
-source ~/.bash/completions
+source ~/.dotfiles/bash/paths
+source ~/.dotfiles/bash/config
+source ~/.dotfiles/bash/aliases
+source ~/.dotfiles/bash/completions
  
-#if [ -f ~/.bashrc ]; then
-#   . ~/.bashrc
-#fi
