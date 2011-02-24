@@ -1,12 +1,20 @@
-Postpone a command: option+q
-Run the last command as root: sudo !!
-Set audible alarm when an IP address comes online: ping -i 60 -a IP_address
-Serve current directory tree at http://localhost:8000/: python -m SimpleHTTPServer
-http://www.commandlinefu.com/
-http://rayninfo.co.uk/tips/zshtips.html
-Start typing a command and press 'up' to get a filtered history
-git stash save "your message here"
-Use: git stash list (to list your stashes)
-http://www.gitready.com/
 If you want to remove a file from the repository, but keep it in your working directory, simply use: git rm --cached <file>
-http://github.com/rupa/z
+Globally search replace on the previous line: !!:gs/old/new/
+Quick substitution. Repeat the last command, replacing string1 with string2. ^string1^string2^ == ``!!:s/string1/string2/''
+for f in `ls | grep -v "\.sh$"`; { mv ${f} ${f}.sh; }
+Diff 2 files with a common base: diff {alpha,beta}site/config/Config.pl
+CTRL-k: delete ('kill') from cursor position to the end of the line
+CTRL-u: delete from cursor position to the beginning of the line
+ALT-d: delete from cursor position to the end of the current 'word'
+CTRL-w: delete from cursor position to the beginning of the current 'word'
+CTRL-a: move cursor to the first character of the line
+CTRL-e: move cursor beyond the last character of the line
+ALT-a: move cursor to the first character of the current 'word'
+ALT-e: move cursor to the last character of the current 'word'
+CTRL-y: insert latest deleted 'word'
+find . -name CVS -exec rm \-rf \{\} \;  
+find . -regex '.*.iml' 
+http://www.ukuug.org/events/linux2003/papers/bash_tips/
+!:0 is the previous command name
+!^, !:2, !:3, …, !$ are the arguments of the previous command
+!* is all the arguments
