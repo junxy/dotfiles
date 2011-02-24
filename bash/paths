@@ -14,6 +14,7 @@ if $darwin; then
 elif $linux; then
   export JAVA6_HOME=/opt/jdk1.6.0_20;
   #export IDEA_HOME=$HOME/local/idea-IU-95.429
+  #export IDEA_HOME=$HOME/local/idea-IU-103.72
   export IDEA_HOME=$HOME/local/idea-IU-99.18
 fi
 

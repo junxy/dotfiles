@@ -57,13 +57,14 @@ alias bkpdb='cp -r $C3/data/devlocal $C3/data/devlocal.bkp'
 alias sshr='ssh -i /home/alexis/w/amazon/c3_dev_keypair.pem root@reporting.c3platform.com'
 alias zkh='for f in {1..3}; do echo "$f --------- "; ssh zk$f "sudo /usr/local/zk/bin/zkServer.sh status "; done'
 alias cfc='rm -vrf ~/.macromedia/Flash_Player/#SharedObjects/ ~/.adobe/Flash_Player/AssetCache/'
+alias sayd='notify-send "`if [ \$? = 0 ]; then echo Done \:\); else echo Failed \:\(; fi`"'
 
 # start oracle vm
 alias sovm='VBoxManage startvm OracleDBServer'
 # kill oracle vm
 alias kovm='VBoxManage controlvm OracleDBServer poweroff'
 # restore 'cleandb' snapshot
-alias rovm='VBoxManage snapshot OracleDBServer restore cleandb'
+alias rovm='VBoxManage snapshot OracleDBServer restore cleandbsetcursors'
 # kill, restore and restart
 alias covm='kovm && rovm && sovm'
 
@@ -84,6 +85,15 @@ fi
 alias pbc='pbcopy'
 alias pbp='pbpaste'
 alias pwdc='pwd|pbc'
+function sd {
+  ($@)
+  if [ $? = 0 ]
+  then
+     notify-send ":) done: $*"
+  else
+     notify-send ":( failed: $*"
+  fi
+}
 function zkb {
   for f in {1..3}; do echo "zk$f --------- "; ssh zk$f "$@"; done
 }
