@@ -43,3 +43,5 @@ export LESS_TERMCAP_so=$(printf "\e[1;47;30m")
 export LESS_TERMCAP_ue=$(printf "\e[0m")
 export LESS_TERMCAP_us=$(printf "\e[0;36m")
 
+# Ctrl+D conveniently exits Bash, specify that it must be pressed twice to exit
+export IGNOREEOF=1

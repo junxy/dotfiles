@@ -1,5 +1,0 @@
-
-export JRUBY_HOME=$C3/config/jruby
-export PATH=$JRUBY_HOME/bin:$PATH
-export C3_ENV='dev'
-export C3_CLIENT_URL=http://cabana:8080
