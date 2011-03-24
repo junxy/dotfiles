@@ -56,7 +56,7 @@
     ol = log --date=relative --pretty=format:'%Cred%h %C(yellow)%d %Cblue%ar %Creset%s %Cgreen%an'
     gr = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %cr%Creset, %Cgreen%an'
     #my commits
-    myc = !git ol --author=Alexis
+    myc = !git log --pretty=format:'%Cred%h %C(yellow)%d %Creset%s' --author=\"`git config user.name`\"
     # some rebase sugar
     pure = pull --rebase
     pp = !git pull --rebase && git push
