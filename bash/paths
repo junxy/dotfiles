@@ -13,7 +13,7 @@ if $darwin; then
   export MANPATH=/opt/local/share/man:$MANPATH
 elif $linux; then
   export JAVA6_HOME=/opt/jdk1.6.0_20;
-  export IDEA_HOME=$HOME/local/idea-IU-99.18
+  export IDEA_HOME=$HOME/local/idea-IU-current
 fi
 
 
