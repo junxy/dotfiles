@@ -41,7 +41,7 @@
 [alias]
     ci = commit
     co = checkout
-    st = status
+    st = status 
     br = branch
     sh = show
     # show difference between the HEAD and the index
@@ -55,6 +55,8 @@
     # quick access to oneline log format         
     ol = log --date=relative --pretty=format:'%Cred%h %C(yellow)%d %Cblue%ar %Creset%s %Cgreen%an'
     gr = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %cr%Creset, %Cgreen%an'
+    #my commits
+    myc = !git log --pretty=format:'%Cred%h %C(yellow)%d %Creset%s' --author=\"`git config user.name`\"
     # some rebase sugar
     pure = pull --rebase
     pp = !git pull --rebase && git push
@@ -62,9 +64,12 @@
     rebi = rebase -i
     rebc = rebase --continue
     reba = rebase --abort
+    #search comments
+    search = !git ol | grep
 
 [push]
-	default = tracking
+  # nothing|matching|tracking|current
+	default = tracking 
 
 [diff]
     # Tells git to detect renames. If set to any boolean value, it will enable basic rename detection.

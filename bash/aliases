@@ -44,16 +44,7 @@ alias dot="cd ~/.dotfiles"
 
 function c { cd ~/w/$1; }
 
-# C3 stuffs
-alias c3="$C3/target/c3_server"
-alias c3env='. load_build_vars'
-alias cdc="cd $C3"
 alias cdw="cd ~/w"
-alias cdl="cd ~/c3log"
-alias lsh="rlwrap $C3/c3shell.sh"
-alias log="less -N ~/c3log/c3_server_0.log"
-alias wpl="mv -v ~/c3log/c3_server_0.log ~/c3log/c3_server_0.log.$(date +%s)"
-alias cpl="mv -v ~/c3log/c3_server_0.log ~/c3log/c3_server_0.log.$(date +%s)"
 
 # OS specific
 if $darwin; then
@@ -68,14 +59,17 @@ fi
 
 alias pbc='pbcopy'
 alias pbp='pbpaste'
+alias pwdc='pwd|pbc'
 
-function ec3 {
-  host=$1; shift
-  ssh -v "${host}.c3platform.com"  $@
-}
-
-function gl {
-  grep "$@" ~/c3log/c3_server_0.log
+# groal-like notification when a command is done
+function sd {
+  ($@)
+  if [ $? = 0 ]
+  then
+     notify-send ":) done: $*"
+  else
+     notify-send ":( failed: $*"
+  fi
 }
 # Switch to a gem directory, trying to match your name the best
 function cdgem {
@@ -84,10 +78,12 @@ function cdgem {
   cd `ls|grep $1|sort|tail -1`
 }
  
-function sgi {
-  sudo gem install $1
-}
- 
 function sagi {
   sudo apt-get -y install $1 
 }
+# Display a random hint
+function hint {
+  fn=~/.dotfiles/lib/hints.txt
+  sed -n $(awk "END{ print $RANDOM%NR+1}" $fn)p $fn
+}
+alias hints='cat $fn'

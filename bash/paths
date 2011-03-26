@@ -13,21 +13,19 @@ if $darwin; then
   export MANPATH=/opt/local/share/man:$MANPATH
 elif $linux; then
   export JAVA6_HOME=/opt/jdk1.6.0_20;
-  export IDEA_HOME=/opt/idea-IU-93.94
+  export IDEA_HOME=$HOME/local/idea-IU-current
 fi
 
 
+export C3=$HOME/w/c3main
 export JAVA_HOME=$JAVA6_HOME; export PATH=$JAVA_HOME/bin:$PATH
 export IDEA_JDK=$JAVA6_HOME
-export QIZX_HOME='/opt/qizx'
 export ANT_HOME='/opt/ant'
 export ECLIPSE_HOME='/opt/eclipse'
 export SQL_DEVELOPER='/opt/sqldeveloper'
+export GROOVY_HOME='/home/alexis/w/bazaar/zk-tools/groovy'
 
-export C3=$HOME/w/c3main
-export EC2_HOME=$HOME/alexis/local/ec2-api-tools-1.3-62308
-export EC2_PRIVATE_KEY=$HOME/alexis/.ec2/pk-VYSM365NGDNPUO6TS6FWYW3WU4ST3KWI.pem
-export EC2_CERT=$HOME/alexis/.ec2/cert-VYSM365NGDNPUO6TS6FWYW3WU4ST3KWI.pem
+export PATH="~/.bin:$EC2_HOME/bin:$HOME/local/bin:$HOME/.bin:$SQL_DEVELOPER:$ECLIPSE_HOME:$ANT_HOME/bin:$GROOVY_HOME/bin:$PATH"
 
-export PATH="~/.bin:$EC2_HOME/bin:$SQL_DEVELOPER:$ECLIPSE_HOME:$QIZX_HOME/bin:$ANT_HOME/bin:$PATH"
-
+# Last
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.
