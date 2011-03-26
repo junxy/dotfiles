@@ -54,16 +54,12 @@ alias lsh="rlwrap $C3/c3shell.sh"
 alias log="less -N ~/c3log/c3_server_0.log"
 alias wpl="mv -v ~/c3log/c3_server_0.log ~/c3log/c3_server_0.log.$(date +%s)"
 alias cpl="mv -v ~/c3log/c3_server_0.log ~/c3log/c3_server_0.log.$(date +%s)"
-alias wpdb='rm -rf $C3/integration/localdb'
-alias bkpdb='cp -r $C3/data/devlocal $C3/data/devlocal.bkp'
-alias sshr='ssh -i /home/alexis/w/amazon/c3_dev_keypair.pem root@reporting.c3platform.com'
 
 # OS specific
 if $darwin; then
   alias gitxa='gitx --all&'
-  alias bkp_muse2motomoto='rsync -C --delete -v -rt /Volumes/MUSE/others /Volumes/MUSE/Photos /Volumes/Volume_1/bkp-muse'
-  alias bkp_muse2mac='rsync -C --delete -v -a /Volumes/MUSE/Photos /Users/am/Pictures/'
-  alias bkp_muse='bkp_muse2mac && bkp_muse2motomoto'
+  alias bkp_2motomoto='time rsync --copy-links -C --delete -rt ~/.bkp_links/ /Volumes/Volume_1/bkp-imac/'
+  alias bkp_2muse='time rsync --copy-links -C --delete -rt ~/.bkp_links/ /Volumes/muse/bkp-imac'
 elif $linux; then 
   alias pbcopy='xsel --clipboard --input'
   alias pbpaste='xsel --clipboard --output'
