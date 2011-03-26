@@ -1,3 +1,4 @@
+for f in *.AVI; { mv -v "$f" "Tom_Sawyer-$n.avi"; ((n = n + 1));}
 If you want to remove a file from the repository, but keep it in your working directory, simply use: git rm --cached <file>
 Globally search replace on the previous line: !!:gs/old/new/
 Quick substitution. Repeat the last command, replacing string1 with string2. ^string1^string2^ == ``!!:s/string1/string2/''
