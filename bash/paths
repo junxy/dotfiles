@@ -26,8 +26,7 @@ export SQL_DEVELOPER='/opt/sqldeveloper'
 export GROOVY_HOME='/home/alexis/w/bazaar/zk-tools/groovy'
 export YJP_HOME="/home/alexis/local/yjp-9.5.4"
 
-export PATH="$HOME/local/bin:$HOME/.bin:$SQL_DEVELOPER:$ECLIPSE_HOME:$ANT_HOME/bin:$GROOVY_HOME/bin:$PATH"
-
+export PATH="~/.bin:$EC2_HOME/bin:$HOME/local/bin:$HOME/.bin:$SQL_DEVELOPER:$ECLIPSE_HOME:$ANT_HOME/bin:$GROOVY_HOME/bin:$PATH"
 
 # Last
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.

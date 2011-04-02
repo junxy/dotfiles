@@ -49,9 +49,8 @@ alias cdw="cd ~/w"
 # OS specific
 if $darwin; then
   alias gitxa='gitx --all&'
-  alias bkp_muse2motomoto='rsync -C --delete -v -rt /Volumes/MUSE/others /Volumes/MUSE/Photos /Volumes/Volume_1/bkp-muse'
-  alias bkp_muse2mac='rsync -C --delete -v -a /Volumes/MUSE/Photos /Users/am/Pictures/'
-  alias bkp_muse='bkp_muse2mac && bkp_muse2motomoto'
+  alias bkp_2motomoto='time rsync --copy-links -C --delete -rt ~/.bkp_links/ /Volumes/Volume_1/bkp-imac/'
+  alias bkp_2muse='time rsync --copy-links -C --delete -rt ~/.bkp_links/ /Volumes/muse/bkp-imac'
 elif $linux; then 
   alias pbcopy='xsel --clipboard --input'
   alias pbpaste='xsel --clipboard --output'
@@ -87,4 +86,4 @@ function hint {
   fn=~/.dotfiles/lib/hints.txt
   sed -n $(awk "END{ print $RANDOM%NR+1}" $fn)p $fn
 }
-alias hints='cat $fn'
+alias hints='cat ~/.dotfiles/lib/hints.txt'
