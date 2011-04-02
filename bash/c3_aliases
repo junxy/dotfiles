@@ -31,6 +31,7 @@ function c3env {
   export PATH=$JRUBY_HOME/bin:$PATH
   export C3_ENV='dev'
   export C3_CLIENT_URL=http://cabana:8080
+  export PROF_ARGS="-agentpath:$YJP_HOME/bin/linux-x86-64/libyjpagent.so"
 }
 
 function mvnenv {

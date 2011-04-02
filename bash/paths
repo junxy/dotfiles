@@ -12,7 +12,7 @@ if $darwin; then
   export PATH=/opt/local/bin:/opt/local/sbin:$PATH
   export MANPATH=/opt/local/share/man:$MANPATH
 elif $linux; then
-  export JAVA6_HOME=/opt/jdk1.6.0_20;
+  export JAVA6_HOME=/opt/jdk1.6.0_24;
   export IDEA_HOME=$HOME/local/idea-IU-current
 fi
 
@@ -24,6 +24,7 @@ export ANT_HOME='/opt/ant'
 export ECLIPSE_HOME='/opt/eclipse'
 export SQL_DEVELOPER='/opt/sqldeveloper'
 export GROOVY_HOME='/home/alexis/w/bazaar/zk-tools/groovy'
+export YJP_HOME="/home/alexis/local/yjp-9.5.4"
 
 export PATH="$HOME/local/bin:$HOME/.bin:$SQL_DEVELOPER:$ECLIPSE_HOME:$ANT_HOME/bin:$GROOVY_HOME/bin:$PATH"
 
