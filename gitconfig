@@ -27,6 +27,7 @@
     editor = vim
 	autocrlf = input
 
+
 [apply]
       whitespace = fix
 
