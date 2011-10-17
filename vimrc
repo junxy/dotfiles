@@ -28,11 +28,11 @@ set directory=~/.vim/swap,~/tmp,.      " keep swp files under ~/.vim/swap
 "  UI ************************************************************************* 
 set ruler                  " show the cursor position all the time
 set noshowcmd              " don't display incomplete commands
-set nolazyredraw           " turn off lazy redraw
-set number                 " line numbers
+" set nolazyredraw           " turn off lazy redraw
+set nonumber               " line numbers
 set wildmenu               " turn on wild menu
 set wildmode=list:longest,full
-set ch=2                   " command line height
+set ch=1                   " command line height
 set backspace=2            " allow backspacing over everything in insert mode
 set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA     " shorten messages
@@ -60,7 +60,7 @@ nnoremap <F7> :set invhls<CR>:exec "let @/='\\<".expand("<cword>")."\\>'"<CR>/<B
 
 
 " Cursor highlights ***********************************************************
-"set cursorline
+" set cursorline
 "set cursorcolumn
 
 set completeopt=longest,menuone " Completion inserts longest common, not first
@@ -88,6 +88,7 @@ function! InsertTabWrapper(direction)
   endif
 endfunction
 
+inoremap kj <Esc>
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
 imap <C-A> <C-X><C-O>
@@ -117,16 +118,5 @@ au BufRead,BufNewFile *.rpdf       set ft=ruby
 au BufRead,BufNewFile buildfile       set ft=ruby " buildr buildfile 
 au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
 
-
-" Plugins *********************************************************************
-let g:fuzzy_ignore = "*.class,*.jar,*.zip,*.png,*.jpg,*.jpeg"
-"let g:fuzzy_matching_limit = 50000
-let g:fuzzy_ceiling = 15000
-let g:fuzzy_roots = ['.', '/home/alexis/w/c3main']
-
-map <leader>t :FuzzyFinderTextMate<CR>
-map <leader>b :FuzzyFinderBuffer<CR>
-map <leader>d :execute 'NERDTreeToggle ' . getcwd()<CR>
-map <leader>f :FuzzyFinderFile<CR>
 
 hi Comment ctermfg=white

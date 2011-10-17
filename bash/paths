@@ -17,17 +17,19 @@ elif $linux; then
 fi
 
 
-export C3=$HOME/w/c3main
+export C3=$HOME/w/c3server
+export C3_ROOT=$HOME/w/c3server
 export JAVA_HOME=$JAVA6_HOME; export PATH=$JAVA_HOME/bin:$PATH
 export IDEA_JDK=$JAVA6_HOME
+export IDEA_PROPERTIES=$HOME/idea.properties
 export ANT_HOME=/opt/ant
 export ECLIPSE_HOME=~/local/eclipse
-export SQL_DEVELOPER=/opt/sqldeveloper
+export SQL_DEVELOPER=~/local/sqldeveloper
 export GROOVY_HOME=~/w/bazaar/zk-tools/groovy
 export YJP_HOME=~/local/yjp-9.5.4
-export SCALA_HOME=~/local/scala-2.8.1.final
+export NODE_HOME=~/local/node
 
-export PATH="~/.bin:$EC2_HOME/bin:$HOME/local/bin:$HOME/.bin:$SQL_DEVELOPER:$SCALA_HOME/bin:$ANT_HOME/bin:$GROOVY_HOME/bin:$PATH"
+export PATH="$NODE_HOME/bin:$EC2_HOME/bin:$HOME/local/bin:$HOME/.bin:$SQL_DEVELOPER:$ANT_HOME/bin:$GROOVY_HOME/bin:$PATH"
 
 # Last
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.

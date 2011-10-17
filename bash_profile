@@ -5,5 +5,5 @@ source ~/.dotfiles/bash/c3_aliases
 source ~/.dotfiles/bash/prompt
 source ~/.dotfiles/bash/completions
  
-echo -e  "Tip:\n`hint`"
+#echo -e  "Tip:\n`hint`"
 

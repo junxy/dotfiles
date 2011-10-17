@@ -1,4 +1,5 @@
-
+[pager]
+  status = true
 [color]
     branch = auto
     diff = auto
@@ -12,10 +13,10 @@
     frag = magenta bold
     old = red bold
     new = green bold
- #[color "status"]
- #   added = blue
- #   changed = green
- #   untracked = cyan
+ [color "status"]
+    added = blue
+    changed = green
+    untracked = cyan
 
 
 [user]
@@ -25,9 +26,8 @@
 [core]
     excludesfile = /home/alexis/.gitignore
     editor = vim
-	autocrlf = input
-
-
+  	autocrlf = input
+    pager = less
 [apply]
       whitespace = fix
 
@@ -79,3 +79,5 @@
     renames = copies
     # a prefix pair that is different from the standard "a/" and "b/"
     mnemonicprefix = true
+[rerere]
+	enabled = 1

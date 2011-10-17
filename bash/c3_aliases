@@ -1,17 +1,20 @@
 
 # C3 stuffs
 alias c3="$C3/target/c3_server"
-alias cdc="cd $C3"
-alias log="less ~/c3log/c3_server.log"
+alias cds="cd $C3"
+alias cda="cd $HOME/w/c3apps"
+alias cdc="cd $HOME/w/c3client"
+alias cdt="cd $HOME/w/c3test"
+alias log="less +F ~/c3log/c3_server.log"
 alias zkh='for f in {1..3}; do echo "$f --------- "; ssh zk$f "sudo /usr/local/zk/bin/zkServer.sh status "; done'
 alias cfc='rm -vrf ~/.macromedia/Flash_Player/#SharedObjects/ ~/.adobe/Flash_Player/AssetCache/'
 
 # start oracle vm
-alias sovm='VBoxManage startvm OracleDBServer'
+alias sovm='VBoxManage startvm oraclevm'
 # kill oracle vm
-alias kovm='VBoxManage controlvm OracleDBServer poweroff'
+alias kovm='VBoxManage controlvm oraclevm poweroff'
 # restore 'cleandb' snapshot
-alias rovm='VBoxManage snapshot OracleDBServer restore cleandbsetcursors'
+alias rovm='VBoxManage snapshot oraclevm restore cleandbsetcursors'
 # kill, restore and restart
 alias covm='kovm && rovm && sovm'
 
@@ -37,4 +40,9 @@ function c3env {
 function mvnenv {
   export MAVEN_HOME=$HOME/local/maven-3.0.1
   export PATH=$MAVEN_HOME/bin:$PATH
+}
+
+function scalaenv {
+  export SCALA_HOME=~/local/typesafe-stack
+  export PATH=$SCALA_HOME/bin:$PATH
 }

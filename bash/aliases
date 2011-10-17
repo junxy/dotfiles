@@ -41,6 +41,7 @@ alias ...='cd ../..'
 alias idea="$IDEA_HOME/bin/idea.sh >> /tmp/idea.log 2>&1 &"
 alias sqldev="sqldeveloper.sh >> /dev/null 2>&1 &"
 alias dot="cd ~/.dotfiles"
+alias viewarchive='file-roller'
 
 function c { cd ~/w/$1; }
 
