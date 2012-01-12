@@ -46,6 +46,7 @@
     st = status 
     br = branch
     sh = show
+    chpk = cherry-pick
     # show difference between the HEAD and the index
     staged = diff --cached
     stg = diff --cached
