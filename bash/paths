@@ -12,7 +12,7 @@ if $darwin; then
   export PATH=/opt/local/bin:/opt/local/sbin:$PATH
   export MANPATH=/opt/local/share/man:$MANPATH
 elif $linux; then
-  export JAVA6_HOME=$HOME/local/jdk1.6.0_24;
+  export JAVA6_HOME=$HOME/local/jdk1.6.0_29;
   export IDEA_HOME=$HOME/local/idea-IU-current
 fi
 
