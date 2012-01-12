@@ -36,7 +36,7 @@ def link_file(source, target)
 end
 
 def replace_file(source, target)
-  remove_file target
+  remove_file target if File.exists? target
   link_file source, target
 end
 
