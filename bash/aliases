@@ -6,27 +6,33 @@ case "`uname`" in
   Darwin*) darwin=true;;
 esac
 
-# Most used commands
-# http://lifehacker.com/202712/review-your-most-oft+used-unix-commands
-#alias profileme="history|awk '{print $2}'|awk 'BEGIN {FS="|"} {print $1}'|sort|uniq -c|sort -r | head -n 25"
+#-----------
+# Searching:
+#-----------
+# ff:  to find a file under the current directory
+function ff () { /usr/bin/find . -name "$@" ; }
+# ffs: to find a file whose name starts with a given string
+function ffs () { /usr/bin/find . -name "$@"'*' ; }
+# ffe: to find a file whose name ends with a given string
+function ffe () { /usr/bin/find . -name '*'"$@" ; }
 
-#################################
-# Bookmark directories
-#################################
-# http://blog.infinitered.com/entries/show/4
-if [ ! -f ~/.dirs ]; then  # if doesn't exist, create it
-  touch ~/.dirs
-fi
-alias show='cat ~/.dirs'
-save (){
-  command sed "/!$/d" ~/.dirs > ~/.dirs1; \mv ~/.dirs1 ~/.dirs; echo "$@"=\"`pwd`\" >> ~/.dirs; source ~/.dirs ; 
-}
-source ~/.dirs  # Initialization for the above 'save' facility: source the .sdirs file
-shopt -s cdable_vars # set the bash option so that no '$' is required when using the above facility
+# grepfind: to grep through files found by find, e.g. grepf pattern '*.c'
+# note that 'grep -r pattern dir_name' is an alternative if want all files 
+function grepfind () { find . -type f -name "$2" -print0 | xargs -0 grep "$1" ; }
+# I often can't recall what I named this alias, so make it work either way: 
+alias findgrep='grepfind'
 
-#################################
+#---------------
+# Text handling:
+#---------------
+# enquote: surround lines with quotes (useful in pipes) - from mervTormel
+function enquote () { /usr/bin/sed 's/^/"/;s/$/"/' ; }
+
+# numberLines: echo the lines of a file preceded by line number
+function numberLines () { perl -pe 's/^/$. /' "$@" ; }
+
+
 # Others 
-#################################
 alias .p='source ~/.bash_profile'
 alias ?='h | g '
 alias g='grep -n'
@@ -34,7 +40,6 @@ alias h='history'
 alias ls='ls -G'
 alias ll='ls -lF'
 alias ps?='ps aux | grep '
-alias ff='find . -type f -iname '
 alias pi='ping www.google.com'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -87,4 +92,3 @@ function hint {
   fn=~/.dotfiles/lib/hints.txt
   sed -n $(awk "END{ print $RANDOM%NR+1}" $fn)p $fn
 }
-alias hints='cat ~/.dotfiles/lib/hints.txt'
