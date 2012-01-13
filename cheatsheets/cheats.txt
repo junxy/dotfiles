@@ -1,0 +1,103 @@
+
+#####################################################################
+## B A S H / S H E L L   F U
+#####################################################################
+http://www.ukuug.org/events/linux2003/papers/bash_tips/
+
+# shortcuts
+CTRL-k: delete ('kill') from cursor position to the end of the line
+CTRL-u: delete from cursor position to the beginning of the line
+ALT-d: delete from cursor position to the end of the current 'word'
+CTRL-w: delete from cursor position to the beginning of the current 'word'
+CTRL-a: move cursor to the first character of the line
+CTRL-e: move cursor beyond the last character of the line
+ALT-a: move cursor to the first character of the current 'word'
+ALT-e: move cursor to the last character of the current 'word'
+CTRL-y: insert latest deleted 'word'
+
+
+# Globally search replace on the previous line
+!!:gs/old/new/
+
+# loops 
+for file in ${files[@]} do echo $file ; done
+for f in `ls | grep -v "\.sh$"`; { mv ${f} ${f}.sh; }
+for f in *.AVI; { mv -v "$f" "Tom_Sawyer-$n.avi"; ((n = n + 1));}
+
+# Other bits of previous commands can be grabbed with !
+   !:0 is the previous command name
+   !^, !:2, !:3, ?, !$ are the arguments
+   !* is all the arguments
+   !-2, !-3, ? are earlier commands
+   !-2^, !-2:2, !-2$, !-2*
+   So can have things like$ !-2:0 -R !^ !-3:2 but looks like nonsense. A brave person who presses Enter
+
+# Resize image with ImageMagick/Mogrify
+mogrify -resize 50% rose.jpg
+mogrify -resize x600">" *.jpg
+mogrify -resize 1024">" *.jpg
+
+# Get the Linux distribution info
+lsb_release -1
+
+# /tmp clean up frequency
+TMPTIME in /etc/default/rcS
+
+# find which IntelliJ modules is using a given jar
+find . -type f -regex '.*.iml' | xargs -t -I{} cat {} | grep log4j
+
+# mount an iso file
+sudo mount -o loop /home/USER/file.iso /media/iso
+
+# mount a network drive
+sudo mount -t cifs //192.168.1.104/Volume_1 vol1/ -o username=admin 
+
+# restart network manager
+/etc/dbus-1/event.d/25NetworkManager 
+
+# topmost executed commands
+history|awk '{print $2}'|sort|uniq -c|sort -rn|head
+
+# install ruby
+sudo apt-get install ruby rdoc irb libyaml-ruby libzlib-ruby ri libopenssl-ruby build-essential ruby1.8-dev
+
+# ssh tunnel
+sudo ssh -i /home/alexis/.ssh/id_rsa -l alexis_midon -L 80:192.168.1.141:80 cvs.calypso.com cat -
+
+ 
+#####################################################################
+## G I T  F U
+#####################################################################
+
+# remove a file from the repository, but keep it in your working directory
+git rm --cached <file>
+
+
+
+
+
+
+
+
+
+#####################################################################
+## S P L U N K  F U
+#####################################################################
+# extract field with regex
+yoursearchhere | rex field=_raw "InetAddress /(?<deadIp>[\d\.]+) .* dead"
+
+eventtype=c3event e_phase=broker |stats max(e_pcdiff) perc90(e_pcdiff)
+eventtype=c3event e_phase=broker |timechart perc5(e_pcdiff) avg(e_pcdiff) perc95(e_pcdiff) count
+
+ 
+
+eventtype=status_logger poolName!=NULL|eval x=host."/".poolName|timechart sum(pending) by x
+
+eventtype=c3event e_phase=broker |timechart perc5(e_pcdiff) avg(e_pcdiff) perc95(e_pcdiff) count
+
+index="os"source="top"( host="r1.i"OR host="r2.i"OR host="r1b.i"OR host="r2b.i") | multikv fields pctCPU | timechart span=1m eval( sum(pctCPU) / 2) as "cpu" by host 
+
+# disk usage
+
+index="os"source="df"hostPart | multikv fields UsePct, MountedOn | search MountedOn= some criteria | timechart span="5m"avg(UsePct) by host
+
