@@ -17,6 +17,14 @@ CTRL-y: insert latest deleted 'word'
 # Save a file you edited in vim without the needed permissions
 :w !sudo tee %
 
+# print Nth line of file
+sed '42q;d' file
+
+# count number of occurences using awk
+grep pattern zk3.log | cut -d'/' -f5-6 |  awk '{count[$1]++}END{for(j in count) print j,count[j]}'
+# or with an input file:
+awk '{count[$1]++}END{for(j in count) print j,"("count[j]" pattern)"}' FS=: resVI.txt
+
 # mtr - traceroute and ping combined
 mtr google.com
 
