@@ -20,6 +20,11 @@ CTRL-y: insert latest deleted 'word'
 # print Nth line of file
 sed '42q;d' file
 
+# join array with a separator (how would you remove the leading separator?)
+R=(box{01..04}.c3-e.com)
+echo $(printf ",%s" "${R[@]}")
+
+
 # count number of occurences using awk
 grep pattern zk3.log | cut -d'/' -f5-6 |  awk '{count[$1]++}END{for(j in count) print j,count[j]}'
 # or with an input file:
