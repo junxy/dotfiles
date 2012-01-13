@@ -14,9 +14,33 @@ ALT-a: move cursor to the first character of the current 'word'
 ALT-e: move cursor to the last character of the current 'word'
 CTRL-y: insert latest deleted 'word'
 
+# Save a file you edited in vim without the needed permissions
+:w !sudo tee %
+
+# print Nth line of file
+sed '42q;d' file
+
+# count number of occurences using awk
+grep pattern zk3.log | cut -d'/' -f5-6 |  awk '{count[$1]++}END{for(j in count) print j,count[j]}'
+# or with an input file:
+awk '{count[$1]++}END{for(j in count) print j,"("count[j]" pattern)"}' FS=: resVI.txt
+
+# mtr - traceroute and ping combined
+mtr google.com
+
+# Find the last command that begins with "whatever," but avoid running it
+!whatever:p
+
+# Copy your public-key to remote-machine for public-key authentication
+ssh-copy-id remote-machine 
+# same as:
+ssh remote-machine 'cat >> .ssh/authorized_keys' < .ssh/identity.pub
 
 # Globally search replace on the previous line
 !!:gs/old/new/
+
+# Extract the %pre and %post script out of the binary rpm ?
+rpm -qp --scripts some_package.rpm >wherever #Replace '--scripts' with '--triggers' if you want the later.
 
 # loops 
 for file in ${files[@]} do echo $file ; done
@@ -30,11 +54,6 @@ for f in *.AVI; { mv -v "$f" "Tom_Sawyer-$n.avi"; ((n = n + 1));}
    !-2, !-3, ? are earlier commands
    !-2^, !-2:2, !-2$, !-2*
    So can have things like$ !-2:0 -R !^ !-3:2 but looks like nonsense. A brave person who presses Enter
-
-# Resize image with ImageMagick/Mogrify
-mogrify -resize 50% rose.jpg
-mogrify -resize x600">" *.jpg
-mogrify -resize 1024">" *.jpg
 
 # Get the Linux distribution info
 lsb_release -1
@@ -57,13 +76,17 @@ sudo mount -t cifs //192.168.1.104/Volume_1 vol1/ -o username=admin
 # topmost executed commands
 history|awk '{print $2}'|sort|uniq -c|sort -rn|head
 
-# install ruby
-sudo apt-get install ruby rdoc irb libyaml-ruby libzlib-ruby ri libopenssl-ruby build-essential ruby1.8-dev
+# use pipe in xargs
+crazy | stuff | xargs -i {} sh -c “this {} | that {}”
 
 # ssh tunnel
 sudo ssh -i /home/alexis/.ssh/id_rsa -l alexis_midon -L 80:192.168.1.141:80 cvs.calypso.com cat -
 
- 
+# Resize image with ImageMagick/Mogrify
+mogrify -resize 50% rose.jpg
+mogrify -resize x600">" *.jpg
+mogrify -resize 1024">" *.jpg
+
 #####################################################################
 ## G I T  F U
 #####################################################################
