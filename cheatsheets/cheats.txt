@@ -1,4 +1,3 @@
-
 #####################################################################
 ## B A S H / S H E L L   F U
 #####################################################################
@@ -73,31 +72,17 @@ sudo ssh -i /home/alexis/.ssh/id_rsa -l alexis_midon -L 80:192.168.1.141:80 cvs.
 git rm --cached <file>
 
 
-
-
-
-
-
-
-
 #####################################################################
 ## S P L U N K  F U
 #####################################################################
+
 # extract field with regex
 yoursearchhere | rex field=_raw "InetAddress /(?<deadIp>[\d\.]+) .* dead"
 
 eventtype=c3event e_phase=broker |stats max(e_pcdiff) perc90(e_pcdiff)
 eventtype=c3event e_phase=broker |timechart perc5(e_pcdiff) avg(e_pcdiff) perc95(e_pcdiff) count
-
- 
-
 eventtype=status_logger poolName!=NULL|eval x=host."/".poolName|timechart sum(pending) by x
 
-eventtype=c3event e_phase=broker |timechart perc5(e_pcdiff) avg(e_pcdiff) perc95(e_pcdiff) count
-
-index="os"source="top"( host="r1.i"OR host="r2.i"OR host="r1b.i"OR host="r2b.i") | multikv fields pctCPU | timechart span=1m eval( sum(pctCPU) / 2) as "cpu" by host 
-
 # disk usage
-
 index="os"source="df"hostPart | multikv fields UsePct, MountedOn | search MountedOn= some criteria | timechart span="5m"avg(UsePct) by host
 
