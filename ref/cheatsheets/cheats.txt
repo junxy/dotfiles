@@ -4,15 +4,18 @@
 http://www.ukuug.org/events/linux2003/papers/bash_tips/
 
 # shortcuts
-CTRL-k: delete ('kill') from cursor position to the end of the line
-CTRL-u: delete from cursor position to the beginning of the line
-ALT-d: delete from cursor position to the end of the current 'word'
-CTRL-w: delete from cursor position to the beginning of the current 'word'
-CTRL-a: move cursor to the first character of the line
-CTRL-e: move cursor beyond the last character of the line
-ALT-a: move cursor to the first character of the current 'word'
-ALT-e: move cursor to the last character of the current 'word'
-CTRL-y: insert latest deleted 'word'
+C-k: delete ('kill') from cursor position to the end of the line
+C-u: delete from cursor position to the beginning of the line
+M-d: delete from cursor position to the end of the current 'word'
+C-w: delete from cursor position to the beginning of the current 'word'
+C-a: move cursor to the first character of the line
+C-e: move cursor beyond the last character of the line
+M-a: move cursor to the first character of the current 'word'
+M-e: move cursor to the last character of the current 'word'
+C-y: insert latest deleted 'word'
+M-.: Yank the last argument to the previous command.
+M-C-y: Yank the first argument to the previous command.
+
 
 # Save a file you edited in vim without the needed permissions
 :w !sudo tee %
