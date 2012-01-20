@@ -1,0 +1,84 @@
+#!/usr/bin/env ruby
+
+# Credits to https://gist.github.com/aboisvert
+# See https://gist.github.com/606895
+
+require 'optparse'
+
+# Parse arguments
+OPTIONS = {}
+op = OptionParser.new do |x|
+  x.banner = 'killjava [-9] [-n] [java_main_class]'
+  x.separator ''
+
+  x.on("-9", "--KILL", "Send KILL signal instead of TERM") do
+    OPTIONS[:kill] = true
+  end
+
+  x.on("-n", "--no-prompt", "Do not prompt user, kill all matching processes") do
+    OPTIONS[:no_prompt] = true
+  end
+
+  x.on("-h", "--help", "Show this message") do
+    puts op
+    exit
+  end
+end
+op.parse!(ARGV)
+OPTIONS[:main_class] = ARGV.first
+
+# Figure out terminal characteristics
+lines, columns = `stty size`.split.map { |x| x.to_i } rescue [25, 80]
+
+# Obtain list of java processes
+processes = `jps -lv`.split("\n")
+
+# Print/filter process ids
+pids = []
+i = 0
+processes.each do |p|
+  main = p.split(" ")[1]
+  if !OPTIONS[:main_class] || main[OPTIONS[:main_class]]
+    pids << p.split(" ")[0].to_i
+    command = p.split(" ").drop(1).join(" ")
+    puts "#{i}: #{command[0..columns-7]}"  # display 1-line per process
+    i += 1
+  end
+end
+
+if pids.size == 0 && OPTIONS[:main_class]
+  puts "No matching processes"
+  exit
+end
+
+if pids.size == 0
+  puts "No Java processes"
+  exit
+end
+
+def kill(pid)
+  cmd = ["kill"]
+  cmd << "-9" if OPTIONS[:kill]
+  cmd << pid
+  cmd = cmd.join(" ")
+  puts cmd
+  `#{cmd}`
+end
+
+def invalid()
+  puts "Invalid process"
+  exit
+end
+
+if OPTIONS[:no_prompt]
+  # Kill all matching processes
+  pids.each { |pid| kill(pid) }
+else
+  puts "Kill which java process?"
+  pid = STDIN.gets
+  if pid && pid.chomp != ""
+    pid = Integer(pid) rescue invalid
+    invalid if (pid < 0) || (pid >= pids.size)
+    kill(pids[pid])
+  end
+end
