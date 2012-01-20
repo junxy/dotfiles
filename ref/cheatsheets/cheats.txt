@@ -27,11 +27,17 @@ sed '42q;d' file
 R=(box{01..04}.c3-e.com)
 echo $(printf ",%s" "${R[@]}")
 
-
 # count number of occurences using awk
 grep pattern zk3.log | cut -d'/' -f5-6 |  awk '{count[$1]++}END{for(j in count) print j,count[j]}'
 # or with an input file:
 awk '{count[$1]++}END{for(j in count) print j,"("count[j]" pattern)"}' FS=: resVI.txt
+
+#  How to prepare commands and execute them with 'su' in one go
+COMMANDS=$(cat <<EOS
+echo 'bar'
+EOS
+)
+su - john -c "$COMMANDS"
 
 # mtr - traceroute and ping combined
 mtr google.com
