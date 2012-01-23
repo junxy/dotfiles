@@ -70,7 +70,7 @@ for f in *.AVI; { mv -v "$f" "Tom_Sawyer-$n.avi"; ((n = n + 1));}
    So can have things like$ !-2:0 -R !^ !-3:2 but looks like nonsense. A brave person who presses Enter
 
 # Get the Linux distribution info
-lsb_release -1
+lsb_release -a
 
 # /tmp clean up frequency
 TMPTIME in /etc/default/rcS
