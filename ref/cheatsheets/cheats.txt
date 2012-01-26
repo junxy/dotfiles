@@ -23,6 +23,9 @@ M-C-y: Yank the first argument to the previous command.
 # print Nth line of file
 sed '42q;d' file
 
+# remove Nth line of file
+sed '3d' fileName.txt
+
 # join array with a separator (how would you remove the leading separator?)
 R=(box{01..04}.c3-e.com)
 echo $(printf ",%s" "${R[@]}")
