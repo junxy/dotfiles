@@ -4,6 +4,7 @@
     branch = auto
     diff = auto
     status = auto
+    interactive = auto
 [color "branch"]
     current = green bold
     local = green
@@ -27,7 +28,7 @@
     excludesfile = /home/alexis/.gitignore
     editor = vim
   	autocrlf = input
-    pager = less
+    pager = less -r
 [apply]
       whitespace = fix
 
@@ -44,9 +45,12 @@
     ci = commit
     co = checkout
     st = status 
+    s = status
+    a = !git add -u $* && git status
     br = branch
     sh = show
     chpk = cherry-pick
+    d = diff --color-words
     # show difference between the HEAD and the index
     staged = diff --cached
     stg = diff --cached
@@ -58,15 +62,16 @@
     # quick access to oneline log format         
     ol = log --date=relative --pretty=format:'%Cred%h %C(yellow)%d %Cblue%ar %Creset%s %Cgreen%an'
     gr = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %cr%Creset, %Cgreen%an'
+    ld = log --stat --abbrev-commit
     #my commits
     myc = !git log --pretty=format:'%Cred%h %C(yellow)%d %Creset%s %Cblue%ar' --author=\"`git config user.name`\"
     # some rebase sugar
     pure = pull --rebase
     pp = !git pull --rebase && git push
-    reb = rebase
-    rebi = rebase -i
-    rebc = rebase --continue
-    reba = rebase --abort
+    r = rebase
+    ri = rebase -i
+    rc = rebase --continue
+    ra = rebase --abort
     #search comments
     search = !git ol | grep
 
