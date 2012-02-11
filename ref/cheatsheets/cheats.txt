@@ -28,7 +28,7 @@ sed '3d' fileName.txt
 
 # monitor a file and execute a command on changes
 while true ; do
-   inotifywait myfile.txt && (somecommand);
+   inotifywait  -e modify myfile.txt && (somecommand);
 done
 
 # join array with a separator (how would you remove the leading separator?)
