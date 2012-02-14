@@ -1,4 +1,7 @@
 
+call pathogen#infect()
+call pathogen#helptags()
+
 " General ******************************************************************** 
 set nocompatible                      " essential
 set history=1000                      " lots of command line history
@@ -46,8 +49,14 @@ set linebreak  " Wrap at word
 " Visual Cues ***************************************************************** 
 set showmatch              " brackets/braces that is
 set mat=5                  " duration to show matching brace (1/10 sec)
-set laststatus=2           " always show the status line
 set visualbell             " shut the fuck up
+" Nice statusbar
+set laststatus=2           " always show the status line
+set statusline=
+set statusline+=%f\                    " file name
+set statusline+=%h%1*%m%r%w%0*         " flags
+set statusline+=%=                     " right align
+set statusline+=%-14.(%l,%c%V%)\ %<%P  " offset
 
 " Searching *******************************************************************
 set hlsearch  " highlight search
