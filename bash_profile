@@ -1,9 +1,9 @@
-source ~/.dotfiles/bash/paths
-source ~/.dotfiles/bash/config
-source ~/.dotfiles/bash/aliases
-source ~/.dotfiles/bash/c3_aliases
-source ~/.dotfiles/bash/prompt
-source ~/.dotfiles/bash/completions
+    for f in ~/.dotfiles/bash/*; do
+      # echo -n "$(basename $f) "
+      #echo -n "."
+      if [[ -f "$f" ]]; then 
+        source $f
+      fi
+    done
  
-#echo -e  "Tip:\n`hint`"
 
