@@ -1,4 +1,3 @@
-
 call pathogen#infect()
 call pathogen#helptags()
 
@@ -41,6 +40,7 @@ set whichwrap+=<,>,h,l,[,] " backspace and cursor keys wrap to
 set shortmess=filtIoOA     " shorten messages
 set report=0               " tell us about changes
 set nostartofline          " don't jump to the start of line when scrolling
+set gcr=a:blinkon0         " Disable cursor blink
 
 " Line Wrapping *************************************************************** 
 set nowrap
