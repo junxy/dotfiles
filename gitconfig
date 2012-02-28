@@ -60,8 +60,8 @@
     both = diff HEAD
     dh = diff HEAD
     # quick access to oneline log format         
-    ol = log --date=relative --pretty=format:'%Cred%h %C(yellow)%d %Cblue%ar %Creset%s %Cgreen%an'
-    gr = log --graph --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %cr%Creset, %Cgreen%an'
+  ol = log --date=relative --pretty=format:'%Cred%h %C(yellow)%d %Creset%s %Cgreen%an %Cblue%ad'
+    gr = log --graph --date-order --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %ci%Creset, %Cgreen%an'
     ld = log --stat --abbrev-commit
     #my commits
     myc = !git log --pretty=format:'%Cred%h %C(yellow)%d %Creset%s %Cblue%ar' --author=\"`git config user.name`\"
@@ -74,7 +74,6 @@
     ra = rebase --abort
     #search comments
     search = !git ol | grep
-
 [push]
   # nothing|matching|tracking|current
 	default = tracking 
@@ -85,5 +84,6 @@
     renames = copies
     # a prefix pair that is different from the standard "a/" and "b/"
     mnemonicprefix = true
+	renameLimit = 2635
 [rerere]
 	enabled = 1
