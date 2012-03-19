@@ -1,0 +1,11 @@
+
+
+# Dev
+export AWS_ENV=c3-dev
+export AWS_CREDENTIAL_FILE=$HOME/auth/aws/keys/cred-dev
+export EC2_PRIVATE_KEY=$HOME/auth/aws/keys/amidon-dev-pk.pem
+export EC2_CERT=$HOME/auth/aws/keys/amidon-dev-cert.pem
+
+export EC2_HOME=$HOME/local/ec2-api-tools
+
+export PATH="$EC2_HOME/bin:$PATH"
