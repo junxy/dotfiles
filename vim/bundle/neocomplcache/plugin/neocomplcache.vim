@@ -1,7 +1,7 @@
 "=============================================================================
 " FILE: neocomplcache.vim
 " AUTHOR:  Shougo Matsushita <Shougo.Matsu@gmail.com>
-" Last Modified: 10 Feb 2012.
+" Last Modified: 31 Mar 2012.
 " License: MIT license  {{{
 "     Permission is hereby granted, free of charge, to any person obtaining
 "     a copy of this software and associated documentation files (the
@@ -26,10 +26,10 @@
 " GetLatestVimScripts: 2620 1 :AutoInstall: neocomplcache
 "=============================================================================
 
-if v:version < 702
-  echoerr 'neocomplcache does not work this version of Vim (' . v:version . ').'
+if exists('g:loaded_neocomplcache')
   finish
-elseif exists('g:loaded_neocomplcache')
+elseif v:version < 702
+  echoerr 'neocomplcache does not work this version of Vim (' . v:version . ').'
   finish
 elseif $SUDO_USER != ''
   echoerr '"sudo vim" is detected. Please use sudo.vim or other plugins instead.'
@@ -47,6 +47,29 @@ command! -nargs=0 NeoComplCacheToggle call neocomplcache#toggle_lock()
 command! -nargs=1 NeoComplCacheLockSource call neocomplcache#lock_source(<q-args>)
 command! -nargs=1 NeoComplCacheUnlockSource call neocomplcache#unlock_source(<q-args>)
 
+" Warning if using obsolute mappings."{{{
+inoremap <unique> <Plug>(neocomplcache_snippets_expand)
+      \ <C-o>:echoerr <SID>print_snippets_complete_error()<CR>
+snoremap <unique> <Plug>(neocomplcache_snippets_expand)
+      \ :<C-u>:echoerr <SID>print_snippets_complete_error()<CR>
+inoremap <unique> <Plug>(neocomplcache_snippets_jump)
+      \ <C-o>:echoerr <SID>print_snippets_complete_error()<CR>
+snoremap <unique> <Plug>(neocomplcache_snippets_jump)
+      \ :<C-u>:echoerr <SID>print_snippets_complete_error()<CR>
+inoremap <unique> <Plug>(neocomplcache_snippets_force_expand)
+      \ <C-o>:echoerr <SID>print_snippets_complete_error()<CR>
+snoremap <unique> <Plug>(neocomplcache_snippets_force_expand)
+      \ :<C-u>:echoerr <SID>print_snippets_complete_error()<CR>
+inoremap <unique> <Plug>(neocomplcache_snippets_force_jump)
+      \ <C-o>:echoerr <SID>print_snippets_complete_error()<CR>
+snoremap <unique> <Plug>(neocomplcache_snippets_force_jump)
+      \ :<C-u>:echoerr <SID>print_snippets_complete_error()<CR>
+function! s:print_snippets_complete_error()
+  return 'Warning: neocomplcache snippets source was splitted!'
+      \ .' You should install snippets_complete source from'
+      \ .' "https://github.com/Shougo/neocomplcache-snippets-complete"'
+endfunction"}}}
+
 " Global options definition."{{{
 let g:neocomplcache_max_list =
       \ get(g:, 'neocomplcache_max_list', 100)
@@ -57,7 +80,7 @@ let g:neocomplcache_max_menu_width =
 let g:neocomplcache_auto_completion_start_length =
       \ get(g:, 'neocomplcache_auto_completion_start_length', 2)
 let g:neocomplcache_manual_completion_start_length =
-      \ get(g:, 'neocomplcache_manual_completion_start_length', 2)
+      \ get(g:, 'neocomplcache_manual_completion_start_length', 0)
 let g:neocomplcache_min_keyword_length =
       \ get(g:, 'neocomplcache_min_keyword_length', 4)
 let g:neocomplcache_enable_ignore_case =
@@ -74,6 +97,8 @@ let g:neocomplcache_enable_underbar_completion =
       \ get(g:, 'neocomplcache_enable_underbar_completion', 0)
 let g:neocomplcache_enable_fuzzy_completion =
       \ get(g:, 'neocomplcache_enable_fuzzy_completion', 0)
+let g:neocomplcache_fuzzy_completion_start_length =
+      \ get(g:, 'neocomplcache_fuzzy_completion_start_length', 3)
 let g:neocomplcache_enable_caching_message =
       \ get(g:, 'neocomplcache_enable_caching_message', 1)
 let g:neocomplcache_enable_insert_char_pre =
@@ -100,7 +125,11 @@ let g:neocomplcache_force_overwrite_completefunc =
       \ get(g:, 'neocomplcache_force_overwrite_completefunc', 0)
 let g:neocomplcache_enable_prefetch =
       \ get(g:, 'neocomplcache_enable_prefetch',
-      \ !(v:version > 703 || v:version == 703 && has('patch418')))
+      \ 1)
+" Note: This feature is temporary disabled.
+      " \  !(v:version > 703 || v:version == 703 && has('patch418')
+      " \  && (!has('xim') || !has('gui_running'))
+      " \ ))
 let g:neocomplcache_release_cache_time =
       \ get(g:, 'neocomplcache_release_cache_time', 900)
 
@@ -124,9 +153,6 @@ let g:neocomplcache_source_rank =
 
 let g:neocomplcache_temporary_dir =
       \ get(g:, 'neocomplcache_temporary_dir', expand('~/.neocon'))
-if !isdirectory(g:neocomplcache_temporary_dir)
-  call mkdir(g:neocomplcache_temporary_dir, 'p')
-endif
 let g:neocomplcache_enable_debug =
       \ get(g:, 'neocomplcache_enable_debug', 0)
 if exists('g:neocomplcache_enable_at_startup') && g:neocomplcache_enable_at_startup
