@@ -21,7 +21,7 @@
 
 
 [user]
-  	email = alexis.midon@c3-carbon.com
+  	email = alexis.midon@c3-e.com
   	name = Alexis Midon
 
 [core]
@@ -60,7 +60,7 @@
     both = diff HEAD
     dh = diff HEAD
     # quick access to oneline log format         
-  ol = log --date=relative --pretty=format:'%Cred%h %C(yellow)%d %Creset%s %Cgreen%an %Cblue%ad'
+  ol = log --date=relative --pretty=format:'%Cred%h %C(yellow)%d %Creset%s %Cgreen%an %Cblue%ad%Creset'
     gr = log --graph --date-order --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %ci%Creset, %Cgreen%an'
     ld = log --stat --abbrev-commit
     #my commits
