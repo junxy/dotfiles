@@ -119,6 +119,8 @@ set -o
 # remove a file from the repository, but keep it in your working directory
 git rm --cached <file>
 
+# remove a file from history
+git filter-branch -f --index-filter 'git rm -r --cached --ignore-unmatch filename' master..HEAD
 
 #####################################################################
 ## S P L U N K  F U
