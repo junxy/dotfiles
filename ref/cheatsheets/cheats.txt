@@ -16,6 +16,8 @@ C-y: insert latest deleted 'word'
 M-.: Yank the last argument to the previous command.
 M-C-y: Yank the first argument to the previous command.
 
+# fix line endings
+sed 's/\x0D/\x0A/g' file
 
 # Save a file you edited in vim without the needed permissions
 :w !sudo tee %
