@@ -124,6 +124,10 @@ git rm --cached <file>
 # remove a file from history
 git filter-branch -f --index-filter 'git rm -r --cached --ignore-unmatch filename' master..HEAD
 
+# To see a list of which commits are on one branch but not another
+# ^ excludes the commit/branch
+git log oldbranch ^newbranch --no-merges
+
 #####################################################################
 ## S P L U N K  F U
 #####################################################################
