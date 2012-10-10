@@ -88,6 +88,9 @@ TMPTIME in /etc/default/rcS
 # find which IntelliJ modules is using a given jar
 find . -type f -regex '.*.iml' | xargs -t -I{} cat {} | grep log4j
 
+# zk 4-letter words
+echo ruok | nc localhost 2181
+
 # mount an iso file
 sudo mount -o loop /home/USER/file.iso /media/iso
 
