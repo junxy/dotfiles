@@ -19,6 +19,9 @@ M-C-y: Yank the first argument to the previous command.
 # fix line endings
 sed 's/\x0D/\x0A/g' file
 
+# append a character
+echo 'a,b,c' | sed 's/$/,/'
+
 # Save a file you edited in vim without the needed permissions
 :w !sudo tee %
 
