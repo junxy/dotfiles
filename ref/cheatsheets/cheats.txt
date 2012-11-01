@@ -16,6 +16,9 @@ C-y: insert latest deleted 'word'
 M-.: Yank the last argument to the previous command.
 M-C-y: Yank the first argument to the previous command.
 
+# Ngrep, Netcat, Sshuttle, Siege, Mitmproxy
+# http://coding.smashingmagazine.com/2012/10/29/powerful-command-line-tools-developers/
+
 # fix line endings
 sed 's/\x0D/\x0A/g' file
 
