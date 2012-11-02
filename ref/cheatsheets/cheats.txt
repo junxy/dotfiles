@@ -16,6 +16,14 @@ C-y: insert latest deleted 'word'
 M-.: Yank the last argument to the previous command.
 M-C-y: Yank the first argument to the previous command.
 
+# Ngrep, Netcat, Sshuttle, Siege, Mitmproxy
+# http://coding.smashingmagazine.com/2012/10/29/powerful-command-line-tools-developers/
+
+# fix line endings
+sed 's/\x0D/\x0A/g' file
+
+# append a character
+echo 'a,b,c' | sed 's/$/,/'
 
 # Save a file you edited in vim without the needed permissions
 :w !sudo tee %
@@ -86,6 +94,9 @@ TMPTIME in /etc/default/rcS
 # find which IntelliJ modules is using a given jar
 find . -type f -regex '.*.iml' | xargs -t -I{} cat {} | grep log4j
 
+# zk 4-letter words
+echo ruok | nc localhost 2181
+
 # mount an iso file
 sudo mount -o loop /home/USER/file.iso /media/iso
 
@@ -119,6 +130,12 @@ set -o
 # remove a file from the repository, but keep it in your working directory
 git rm --cached <file>
 
+# remove a file from history
+git filter-branch -f --index-filter 'git rm -r --cached --ignore-unmatch filename' master..HEAD
+
+# To see a list of which commits are on one branch but not another
+# ^ excludes the commit/branch
+git log oldbranch ^newbranch --no-merges
 
 #####################################################################
 ## S P L U N K  F U
