@@ -30,5 +30,17 @@ function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
 
-PS1="\[\033[01;34m\]\$(trim_path)\[\033[00m\]\$(parse_git_branch)$"
+function reset_prompt {
+local        BLUE="\[\033[00;34m\]"
+local         RED="\[\033[0;31m\]"
+local   LIGHT_RED="\[\033[1;31m\]"
+local       GREEN="\[\033[0;32m\]"
+local LIGHT_GREEN="\[\033[1;32m\]"
+local       WHITE="\[\033[1;37m\]"
+local        GRAY="\[\033[00m\]"
+local        TEAL="\[\e[0;36m\]"
 
+PS1="\`a=\$?; if [ \$a = 0 ]; then echo \$a; else echo -ne \"\033[00;31m\$a\"; fi\` $GRAY\\! \$(trim_path)\[\033[00m\]\$(parse_git_branch)$"
+}
+
+reset_prompt
