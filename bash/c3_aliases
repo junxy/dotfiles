@@ -38,7 +38,7 @@ function c3env {
 }
 
 function mvnenv {
-  export MAVEN_HOME=$HOME/local/maven-3.0.1
+  export MAVEN_HOME=$HOME/local/apache-maven-3.0.4
   export PATH=$MAVEN_HOME/bin:$PATH
 }
 

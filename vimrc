@@ -151,7 +151,7 @@ inoremap <Up> <C-o>gk
 " File Types ******************************************************************
 au BufRead,BufNewFile *.rpdf       set ft=ruby
 au BufRead,BufNewFile buildfile       set ft=ruby " buildr buildfile 
-au Filetype html,xml,xsl source ~/.vim/scripts/closetag.vim
+au Filetype html,xml,xsl source ~/.vim/bundle/closetag.vim
 
 
 hi Comment ctermfg=white

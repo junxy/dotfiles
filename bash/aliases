@@ -44,6 +44,7 @@ alias pi='ping www.google.com'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias idea="$IDEA_HOME/bin/idea.sh >> /tmp/idea.log 2>&1 &"
+alias rmine="$RUBYMINE_HOME/bin/rubymine.sh >> /tmp/rubymine.log 2>&1 &"
 alias sqldev="sqldeveloper.sh >> /dev/null 2>&1 &"
 alias viewarchive='file-roller'
 

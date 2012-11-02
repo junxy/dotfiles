@@ -79,6 +79,8 @@
 	default = tracking 
 
 [diff]
+  color-words=1
+  word-diff=1
     # Tells git to detect renames. If set to any boolean value, it will enable basic rename detection.
     # If set to "copies" or "copy", it will detect copies, as well.
     renames = copies
@@ -89,6 +91,6 @@
 [rerere]
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
-	enabled = 1
+	enabled = 0
 [advice]
 	statushints = false
