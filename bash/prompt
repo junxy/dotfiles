@@ -40,7 +40,10 @@ local       WHITE="\[\033[1;37m\]"
 local        GRAY="\[\033[00m\]"
 local        TEAL="\[\e[0;36m\]"
 
-PS1="\`a=\$?; if [ \$a = 0 ]; then echo \$a; else echo -ne \"\033[00;31m\$a\"; fi\` $GRAY\\! \$(trim_path)\[\033[00m\]\$(parse_git_branch)$"
+# echo the last exit status in red if non-zero
+# iTerm does not seem to like it as the prompt gets messed up when scrolling the history
+#PS1="\`a=\$?; if [ \$a = 0 ]; then echo \$a; else echo -ne \"\033[00;31m\$a\"; fi\` $GRAY\\! \$(trim_path)\[\033[00m\]\$(parse_git_branch)$"
+PS1="\$? \\! \$(trim_path)\[\033[00m\]\$(parse_git_branch)$"
 }
 
 reset_prompt
