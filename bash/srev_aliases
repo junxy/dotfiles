@@ -1,0 +1,22 @@
+
+function rsstatus () {
+  for n in $*; do
+    ssh -q $n.int.ssi-cloud.com "/usr/bin/mongo -verbose localhost:27018/admin --eval 'printjson(rs.status())'"
+  done
+}
+function rsconfig () {
+  for n in $*; do
+    ssh -q $n.int.ssi-cloud.com "/usr/bin/mongo --verbose localhost:27018/admin --eval 'printjson(rs.config())'"
+  done
+}
+
+function reconfig () {
+  primary=$1
+  if [[ $1 == "" ]]; then
+    echo "missing hostname!" >& 2
+    return 1
+  fi
+  dest="/tmp/reconfig_$(date '+%s').js"
+  scp -q /Users/alexis/w/infrastructure/util/migration/reconfig.js  $primary:$dest \
+      && ssh -q $primary "/usr/bin/mongo  localhost:27018/admin $dest"
+}

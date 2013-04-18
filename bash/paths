@@ -7,8 +7,6 @@ case "`uname`" in
 esac
 
 if $darwin; then
-  JAVA6_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
-  # MacPorts Installer addition on 2009-04-26_at_15:30:59: adding an appropriate PATH variable for use with MacPorts.
   export PATH=/opt/local/bin:/opt/local/sbin:$PATH
   export MANPATH=/opt/local/share/man:$MANPATH
 elif $linux; then
@@ -18,21 +16,15 @@ elif $linux; then
 fi
 
 
-export C3=$HOME/w/c3server
-export C3_ROOT=$HOME/w/c3server
-export JAVA_HOME=$JAVA6_HOME; export PATH=$JAVA_HOME/bin:$PATH
-export IDEA_JDK=$JAVA6_HOME
 export IDEA_PROPERTIES=$HOME/idea.properties
-export ANT_HOME=~/local/apache-ant-1.8.4
-export ECLIPSE_HOME=~/local/eclipse
-export SQL_DEVELOPER=~/local/sqldeveloper
-export GROOVY_HOME=~/w/bazaar/zk-tools/groovy
-#export YJP_HOME=~/local/yjp-9.5.4
-export YJP_HOME=~/local/yjp-11.0.8
-export NODE_HOME=~/local/node
+export NPM_SHARE=/usr/local/share/npm
+export RUBY_HOME=/usr/local/opt/ruby
 
-export PATH="$NODE_HOME/bin:$EC2_HOME/bin:$HOME/local/bin:$HOME/.bin:$SQL_DEVELOPER:$ANT_HOME/bin:$GROOVY_HOME/bin:$PATH"
-export VM_ARGS="-Dcom.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize=true"
+export PATH="$RUBY_HOME/bin:$NPM_SHARE/bin:$HOME/local/bin:$HOME/.bin:$PATH"
+#export VM_ARGS="-Dcom.sun.xml.bind.v2.bytecode.ClassTailor.noOptimize=true"
+
+export JAVA_HOME="$(/usr/libexec/java_home)"
+
 
 # Last
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"  # This loads RVM into a shell session.

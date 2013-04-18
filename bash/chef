@@ -1,0 +1,24 @@
+
+
+function chef_whoami() {
+	echo "Chef creds are: ${CHEF_USER:-nobody}@${CHEF_ORGANIZATION:-noorg}"
+}
+
+function chef_reset() {
+	export CHEF_USER=
+	export CHEF_ORGANIZATION=
+	chef_whoami
+}
+
+function chef_mmz(){
+	export CHEF_USER='alexismidon'
+	export CHEF_ORGANIZATION='mmz'
+	chef_whoami
+}
+
+
+function chef_srev(){
+	export CHEF_USER='alexismidon'
+	export CHEF_ORGANIZATION='srev'
+	chef_whoami
+}

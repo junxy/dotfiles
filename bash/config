@@ -7,11 +7,6 @@ export EDITOR=vim
 export FIGNORE="svn"
 export JAVA_OPTS='-Dhttp.nonProxyHosts=localhost'
 
-# MacPorts Bash shell command completion
-if [ -f /opt/local/etc/bash_completion ]; then
-      . /opt/local/etc/bash_completion
-fi
-
 # Autocorrect mispelled directories
 shopt -s cdspell
 

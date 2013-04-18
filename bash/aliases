@@ -34,7 +34,7 @@ function numberLines () { perl -pe 's/^/$. /' "$@" ; }
 
 # Others 
 alias .p='source ~/.bash_profile'
-alias ?='h | g '
+alias ?='h | grep'
 alias g='grep -n'
 alias h='history'
 alias ls='ls -G'
@@ -43,40 +43,35 @@ alias ps?='ps aux | grep '
 alias pi='ping www.google.com'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias idea="$IDEA_HOME/bin/idea.sh >> /tmp/idea.log 2>&1 &"
-alias rmine="$RUBYMINE_HOME/bin/rubymine.sh >> /tmp/rubymine.log 2>&1 &"
-alias sqldev="sqldeveloper.sh >> /dev/null 2>&1 &"
-alias viewarchive='file-roller'
 
 function c { cd ~/w/$1; }
 
 alias cdw="cd ~/w"
 
 # OS specific
-if $darwin; then
-  alias gitxa='gitx --all&'
-  alias bkp_2motomoto='time rsync --copy-links -C --delete -rt ~/.bkp_links/ /Volumes/Volume_1/bkp-imac/'
-  alias bkp_2muse='time rsync --copy-links -C --delete -rt ~/.bkp_links/ /Volumes/muse/bkp-imac'
-elif $linux; then 
+if $linux; then 
   alias pbcopy='xsel --clipboard --input'
   alias pbpaste='xsel --clipboard --output'
   alias gitka='gitk --all&'
+  # groal-like notification when a command is done
+  function sd {
+    ($@)
+    if [ $? = 0 ]
+    then
+       notify-send ":) done: $*"
+    else
+       notify-send ":( failed: $*"
+    fi
+  }
+  function sagi {
+    sudo apt-get -y install $1 
+  }
 fi
 
 alias pbc='pbcopy'
 alias pbp='pbpaste'
 alias pwdc='pwd|pbc'
 
-# groal-like notification when a command is done
-function sd {
-  ($@)
-  if [ $? = 0 ]
-  then
-     notify-send ":) done: $*"
-  else
-     notify-send ":( failed: $*"
-  fi
-}
 # Switch to a gem directory, trying to match your name the best
 function cdgem {
   gem_dir=`gem env | grep INSTALLATION | cut -d' ' -f6`
@@ -84,9 +79,6 @@ function cdgem {
   cd `ls|grep $1|sort|tail -1`
 }
  
-function sagi {
-  sudo apt-get -y install $1 
-}
 # Display a random hint
 function hint {
   fn=~/.dotfiles/lib/hints.txt

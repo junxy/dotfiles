@@ -1,11 +1,67 @@
 
 
-# Dev
-export AWS_ENV=c3-dev
-export AWS_CREDENTIAL_FILE=$HOME/auth/aws/keys/cred-dev
-export EC2_PRIVATE_KEY=$HOME/auth/aws/keys/amidon-dev-pk.pem
-export EC2_CERT=$HOME/auth/aws/keys/amidon-dev-cert.pem
 
-export EC2_HOME=$HOME/local/ec2-api-tools
+export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
 
-export PATH="$EC2_HOME/bin:$PATH"
+#export AWS_CONFIG_FILE=$HOME/.aws_config
+
+export AWS_AUTO_SCALING_HOME=$HOME/local/asg
+export AWS_IAM_HOME=$HOME/local/iam
+
+export PATH=$PATH:$AWS_AUTO_SCALING_HOME/bin:$AWS_IAM_HOME/bin
+
+
+function aws_whoami() {
+	echo "AWS creds are: ${AWS_USER:-nobody}@${AWS_ENV:-nowhere}"
+}
+
+function aws_reset() {
+    export AWS_ENV=
+	export AWS_USER=
+	export AWS_ACCNO=
+    export EC2_PRIVATE_KEY=
+    export EC2_CERT=
+    export AWS_CREDENTIAL_FILE=
+
+    export AWS_ACCESS_KEY_ID=
+    export AWS_SECRET_ACCESS_KEY=
+    export AMAZON_ACCESS_KEY_ID=
+    export AMAZON_SECRET_ACCESS_KEY=
+}
+
+
+function aws_srev() {
+    export AWS_ENV=ssi-rod-dev
+	export AWS_USER=amidon
+	
+    ACCOUNT_DIR=$HOME/Dropbox/.secrets/srev/aws/${AWS_ENV}
+	export AWS_ACCNO=569804575345
+    export EC2_PRIVATE_KEY="$ACCOUNT_DIR/pk-${AWS_ENV}_${AWS_USER}.pem"
+    export EC2_CERT="$ACCOUNT_DIR/cert-${AWS_ENV}_${AWS_USER}.pem"
+    export AWS_CREDENTIAL_FILE="$ACCOUNT_DIR/credentials-${AWS_ENV}_${AWS_USER}"
+
+    export AWS_ACCESS_KEY_ID="$(sed -n "s|AWSAccessKeyId=\(.*\)$|\1|p" $AWS_CREDENTIAL_FILE)"
+    export AWS_SECRET_ACCESS_KEY="$(sed -n "s|AWSSecretKey=\(.*\)$|\1|p" $AWS_CREDENTIAL_FILE)"
+    export AMAZON_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+    export AMAZON_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+    aws_whoami
+}
+
+
+function aws_mmz() {
+    export AWS_ENV=mmz
+	export AWS_USER=alexis
+	
+    ACCOUNT_DIR=$HOME/Dropbox/.secrets/mmz/aws/${AWS_ENV}
+	export AWS_ACCNO=306567541202
+    export EC2_PRIVATE_KEY="$ACCOUNT_DIR/pk-${AWS_ENV}_${AWS_USER}.pem"
+    export EC2_CERT="$ACCOUNT_DIR/cert-${AWS_ENV}_${AWS_USER}.pem"
+    export AWS_CREDENTIAL_FILE="$ACCOUNT_DIR/credentials-${AWS_ENV}_${AWS_USER}"
+
+    export AWS_ACCESS_KEY_ID="$(sed -n "s|AWSAccessKeyId=\(.*\)$|\1|p" $AWS_CREDENTIAL_FILE)"
+    export AWS_SECRET_ACCESS_KEY="$(sed -n "s|AWSSecretKey=\(.*\)$|\1|p" $AWS_CREDENTIAL_FILE)"
+    export AMAZON_ACCESS_KEY_ID="$AWS_ACCESS_KEY_ID"
+    export AMAZON_SECRET_ACCESS_KEY="$AWS_SECRET_ACCESS_KEY"
+    aws_whoami
+}
+

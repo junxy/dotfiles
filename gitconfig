@@ -21,7 +21,7 @@
 
 
 [user]
-  	email = alexis.midon@c3-e.com
+  	email = amidon@servicesource.com
   	name = Alexis Midon
 
 [core]
@@ -61,7 +61,7 @@
     dh = diff HEAD
     # quick access to oneline log format         
   ol = log --date=relative --pretty=format:'%Cred%h %C(yellow)%d %Creset%s %Cgreen%an %Cblue%ad%Creset'
-    gr = log --graph --date-order --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %ci%Creset, %Cgreen%an'
+    gr = log --graph --date-order --pretty=format:'%Cred%h%Creset%C(yellow)%d%Creset %s%Cgreen %ci%Creset, %Cgreen%an%Creset'
     ld = log --stat --abbrev-commit
     #my commits
     myc = !git log --pretty=format:'%Cred%h %C(yellow)%d %Creset%s %Cblue%ar' --author=\"`git config user.name`\"
@@ -93,4 +93,4 @@
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
 	enabled = 0
 [advice]
-	statushints = false
+#	statushints = false
