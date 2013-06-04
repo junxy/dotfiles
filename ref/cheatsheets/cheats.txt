@@ -39,6 +39,9 @@ while true ; do
    inotifywait  -e modify myfile.txt && (somecommand);
 done
 
+# truncate an open file
+sudo cat /dev/null > foo.txt
+
 # join array with a separator (how would you remove the leading separator?)
 R=(box{01..04}.c3-e.com)
 echo $(printf ",%s" "${R[@]}")
