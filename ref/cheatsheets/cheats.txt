@@ -16,6 +16,9 @@ C-y: insert latest deleted 'word'
 M-.: Yank the last argument to the previous command.
 M-C-y: Yank the first argument to the previous command.
 
+# loging with a user that does not have a shel, typically a service account
+su -s /bin/bash jenkins
+
 # Ngrep, Netcat, Sshuttle, Siege, Mitmproxy
 # http://coding.smashingmagazine.com/2012/10/29/powerful-command-line-tools-developers/
 
