@@ -25,6 +25,10 @@ su -s /bin/bash jenkins
 # fix line endings
 sed 's/\x0D/\x0A/g' file
 
+# replace the 2nd occurence and on
+# 'zeline REPLACE_ME REPLACE_ME REPLACE_ME' will become 'zeline REPLACE_ME '
+sed '/zeline/s|REPLACE_ME||2g' /zefile
+    
 # append a character
 echo 'a,b,c' | sed 's/$/,/'
 
